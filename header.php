@@ -1,9 +1,20 @@
-<!DOCTYPE html>
+<?php
+
+/**
+ * increare header layout
+ * 
+ * @package WordPress
+ * @subpackage increare
+ * @since increare 0.01
+ * 
+ */
+?><!DOCTYPE html>
 <html <?php language_attributes(); ?> >
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo( 'stylesheet_url' ); ?>" media="screen">
+	<title><?php bloginfo( 'name' ); ?></title>
 	<?php wp_enqueue_script("jquery"); ?>
 	<?php wp_head(); ?>
 </head>
@@ -12,8 +23,6 @@
 <header>
 	<div id="ic_s_header">
 		<span id="ic_s_header_contact">Phone: (+49)1268 785 623 - E-Mail: info@increare.de</span>
-		<?php $myPost = get_post(get_theme_mod( 'portfolio_selection_0' )) ?>
-		<span><?php echo $myPost->post_title ?></span>
 		<span id="ic_s_header_socialnetwork">f - T - g+ - dw</span>
 	</div><!-- #ic_s_header -->
 </header>
@@ -31,7 +40,9 @@
 		</div><!-- #ic_logo -->
 
 		<nav>
+
 		<?php wp_nav_menu(); ?>
+
 		</nav>
 
 	</div><!-- #ic_header -->

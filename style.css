@@ -1,8 +1,8 @@
 /*
-Theme Name: IN|creare
+Theme Name: increare
 Author: dr.acul@posteo.de
 Version: 0.01
-Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+Tags: blue, green, white, dark, one-column, two-columns, three-colums, custom-header, custom-menu, translation-ready
 
 */
 
@@ -56,12 +56,12 @@ div#ic_s_header {
 }
 
 span#ic_s_header_contact {
-	padding-left: 5.2em;
+	padding-left: 2.5em;
 }
 
 span#ic_s_header_socialnetwork {
 	float: right;
-	padding-right: 5.2em;
+	padding-right: 2.5em;
 	font-weight: bold;
 }
 
@@ -87,7 +87,7 @@ div#ic_logo_img img { height: 64px; }
 
 #ic_logo h1, #ic_logo p {
 	display: inline;
-	padding-left: 2em;
+	padding-left: 1em;
 }
 
 #ic_logo h1 { line-height: 1.8em; } /* remove boder from line height */
@@ -95,19 +95,19 @@ div#ic_logo_img img { height: 64px; }
 #ic_logo p { line-height: 3.6em; } /* remove border from line height */
 
 /* Top Menu */
-ul.menu {
+header ul.menu {
 	display: block;
 	width: auto;
-	z-index: 9999;
+	z-index: 99999;
 	list-style-type: none;
 	float: right;
 }
 
-li.menu-item { float: left; }
+header li.menu-item { float: left; }
 
-li.menu-item a {
-	text-decoration: none;
+header li.menu-item a {
 	display: block;
+	text-decoration: none;
 	padding: 0 1em 0 1em;
 	font-weight: bold;
 	border-bottom: 0.4em solid rgba(0,255,0,0.4);
@@ -115,9 +115,9 @@ li.menu-item a {
 	height: 4em;
 }
 
-li.menu-item a:hover {
+header li.menu-item a:hover {
 /*	background-color: rgb(19,0,77); */
-	background-color: rgba(255,255,255,0.2);
+/*	background-color: rgba(255,255,255,0.2); */
 /*	border-bottom: 0.4em solid rgb(54,0,217); */
 	background-color: rgba(255,255,255,0.2);
 	z-index: 9999;
@@ -125,27 +125,40 @@ li.menu-item a:hover {
 
 /* being responsive - put responsive code together!!!*/
 
- ul.menu li:last-child { display: none; }
-
 @media screen and (max-width:680px) {
-  ul.menu li:not(:first-child) {display: none;}
-  ul.menu li:last-child {
- 	 display: inherit;
- 	 float: right;
-  }
- 
-  ul.menu {
-    float: right;
-    display: inline-block;
-  }
-  
-    ul.menu:hover {
-  	display: block;
-  	height: 300px;
-  	width: 300px;
-  	background-color: black;
-  	overflow: visible;
-  }
+	
+	#ic_logo p { display: none; }
+	
+	header li.menu-item { clear: both; }
+	
+	header li.menu-item:fist-child:before {
+		content: "Peter";
+	}
+	
+	header li.menu-item a {
+		padding: 0 1em 0 0;
+		border: 0;
+	}
+	
+	header ul.menu {
+		height: 4em;
+		overflow: hidden;
+		float: right;
+		display: inline-block;
+	}
+	
+	header ul.menu:hover {
+		height: auto;
+		display: block;
+		overflow: visible;
+		background-color: rgb(19,0,77);
+	}
+	
+	header ul.menu:hover li a{
+		width: 246px;
+		text-align: right;
+		display: block;
+	}
 }
 
 /* Slideshow */
@@ -161,12 +174,11 @@ div.meteor-buttons {}
 
 /* Frontpage portfolio */
 div.ic_portfolio_row {
-	margin: auto;
 	margin-bottom: 20px;
 	margin-top: 2em;
 /*	background-color: rgba(0,80,255,0.4); */
-	min-height: 16em;
-	width: 1134px;
+	margin-left: 4em;
+	margin-right: 4em;
 }
 
 div.ic_portfolio_col {
@@ -178,25 +190,176 @@ div.ic_portfolio_col {
 	color: rgb(19,0,77);
 }
 
-div.ic_portfolio_col:first-child {
-	margin-left: -2em;
-}
-div.ic_portfolio_col:nth-child(2) {
-	margin-left: 2em;
-	margin-right: 2em
-}
-div.ic_portfolio_col:last-child {
-	margin-right: -2em;
-}
-
 div.ic_portfolio_col:hover {
 	background-color: rgb(240,240,240);
 }
 
 /* TODO: Put responsive code together */
-@media all and ( min-width: 600px ) {
+@media screen and ( min-width: 600px ) {
 	div.ic_portfolio_col {
 		float: left;
 		width: 33.3333333%;
 	}
+	
+	div.ic_portfolio_col:first-child {
+		margin-left: -2em;
+	}
+
+	div.ic_portfolio_col:nth-child(2) {
+		margin-left: 2em;
+		margin-right: 2em
+	}
+
+	div.ic_portfolio_col:last-child {
+		margin-right: -2em;
+	}
+}
+
+@media screen and ( max-width: 600px ) {
+	div.ic_portfolio_col:not(:last-child) {
+		margin-bottom: 2em;
+	}
+}
+
+/* footer stuff */
+div#footer {
+	width: 100%;
+	background-color: rgb(19,0,77);
+	border-top: 0.4em solid rgb(0,255,0);
+	padding-left: 2em;
+	padding-right: 2em;
+	padding-top: 2em;
+}
+
+div#footer ul.menu {
+	background-color: none;
+	padding-left: 1em;
+}
+
+div#footer li.menu-item { list-style: none; }
+
+div#footer li.menu-item a {
+	display: inline;
+	background: none;
+	
+}
+
+div#footer div {}
+
+.textwidget { width: 100%; }
+
+
+/* TODO: Put responsive code together */
+@media all and ( min-width: 600px ) {
+	div#footer div.widget-container {
+		float: left;
+		width: 33.3333333%;
+	}
+}
+
+/* =WordPress Core
+-------------------------------------------------------------- */
+.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 5px auto 5px auto;
+}
+
+.alignright {
+    float:right;
+    margin: 5px 0 20px 20px;
+}
+
+.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+a img.alignright {
+    float: right;
+    margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+a img.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.wp-caption {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 5px 3px 10px;
+    text-align: center;
+}
+
+.wp-caption.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignleft {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignright {
+    margin: 5px 0 20px 20px;
+}
+
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 98.5%;
+    padding: 0;
+    width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+    font-size: 11px;
+    line-height: 17px;
+    margin: 0;
+    padding: 0 4px 5px;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
 }

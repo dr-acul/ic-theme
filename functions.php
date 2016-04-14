@@ -1,8 +1,20 @@
-<?php add_theme_support( 'custom-background' );
+<?php
+
+/**
+ * increare functions and definitions
+ * 
+ * @package WordPress
+ * @subpackage increare
+ * @since increare 0.01
+ * 
+ */
+ 
+//add theme supports
+add_theme_support( 'custom-background' );
+add_theme_support( 'custom-logo' );
 
 // clean wp header
 // source: https://digwp.com/2010/03/wordpress-functions-php-template-custom-functions/
-
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
@@ -13,15 +25,37 @@ add_filter('show_admin_bar', '__return_false');
 //add footer sidebar feature
 
 function footer_widget_init() {
+
 	register_sidebar( array(
-		'name' 			=> __( 'Left Footer Widget Area', 'increare'),
-		'id' 			=> 'left-footer-widget-area',
-		'description' 	=> __( 'Widget Area for the left footer.' ),
-		'before_widget' => '<div id="%1$s" clas="widget-container %2$s">',
+		'name' 			=> __( 'Footer Widgets (left)', 'increare'),
+		'id' 			=> 'left_footer_widgets',
+		'description' 	=> __( 'Select widgets for the left footer area.', 'increare' ),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
 		'after_widget'	=> '</div>',
 		'before_title'	=> '<h3 class="widget-title">',
 		'after_title'	=> '</h3>', 
-		) );
+	) );
+		
+	register_sidebar( array( 
+		'name'			=> __( 'Footer Widgets (middle)', 'increare'),
+		'id'			=> 'middle_footer_widgets',
+		'description'	=> __( 'Select widgets for the middle footer area.', 'increare' ),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget'	=> '</div>',
+		'before_title'	=> '<h3 class="widget-title">',
+		'after_title'	=> '</h3>',
+	) );
+	
+		register_sidebar( array( 
+		'name'			=> __( 'Footer Widgets (right)', 'increare'),
+		'id'			=> 'right_footer_widgets',
+		'description'	=> __( 'Select widgets for the right footer area.', 'increare' ),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget'	=> '</div>',
+		'before_title'	=> '<h3 class="widget-title">',
+		'after_title'	=> '</h3>',
+	) );
+
 }
 
 add_action( 'widgets_init', 'footer_widget_init');
@@ -102,6 +136,5 @@ function themeslug_theme_customizer( $wp_customize ) {
 			'settings' => 'themeslug_logo',
 	) ) );
 }
-add_action('customize_register', 'themeslug_theme_customizer');
 add_action('customize_register', 'portfolio_theme_customizer');
 ?>
