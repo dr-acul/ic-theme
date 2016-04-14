@@ -1,0 +1,202 @@
+/*
+Theme Name: IN|creare
+Author: dr.acul@posteo.de
+Version: 0.01
+Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+
+*/
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin,latin-ext);
+
+html, body, header, nav, ul, li, div, a, h1, h2, h3, h4, h5, h6, p {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	color: inherit;
+	text-decoration: inherit;
+}
+
+body {
+	background-position: 0 5.4em !important;
+	font-family: 'Open Sans', sans-serif;
+	color: WhiteSmoke;
+}
+
+/* resets */
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+.clearfix:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* start content below fixed header */
+header { margin-bottom: 7.4em; }
+
+#page {/*div */ }
+
+/* small header */
+div#ic_s_header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 2em;
+	line-height: 2em;
+	font-size: 0.8em;
+	background-color: rgb(19,0,77);
+	z-index: 9999;
+	
+}
+
+span#ic_s_header_contact {
+	padding-left: 5.2em;
+}
+
+span#ic_s_header_socialnetwork {
+	float: right;
+	padding-right: 5.2em;
+	font-weight: bold;
+}
+
+/* Logo/Menu Header */
+
+div#ic_header {
+	position: fixed;
+	top: 1.6em;
+	width: 100%;
+	height: 4em;
+/*  background-color: rgba(0,80,255,0.8); */
+	background-color: rgb(19,0,77);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    z-index: 9999;
+    border-bottom: 0.4em solid rgba(0,255,0,0.8);
+}
+
+div#ic_logo { float: left; }
+
+div#ic_logo_img { float: left; }
+
+div#ic_logo_img img { height: 64px; }
+
+#ic_logo h1, #ic_logo p {
+	display: inline;
+	padding-left: 2em;
+}
+
+#ic_logo h1 { line-height: 1.8em; } /* remove boder from line height */
+
+#ic_logo p { line-height: 3.6em; } /* remove border from line height */
+
+/* Top Menu */
+ul.menu {
+	display: block;
+	width: auto;
+	z-index: 9999;
+	list-style-type: none;
+	float: right;
+}
+
+li.menu-item { float: left; }
+
+li.menu-item a {
+	text-decoration: none;
+	display: block;
+	padding: 0 1em 0 1em;
+	font-weight: bold;
+	border-bottom: 0.4em solid rgba(0,255,0,0.4);
+	line-height: 3.6em; /* remove border from line height */
+	height: 4em;
+}
+
+li.menu-item a:hover {
+/*	background-color: rgb(19,0,77); */
+	background-color: rgba(255,255,255,0.2);
+/*	border-bottom: 0.4em solid rgb(54,0,217); */
+	background-color: rgba(255,255,255,0.2);
+	z-index: 9999;
+}
+
+/* being responsive - put responsive code together!!!*/
+
+ ul.menu li:last-child { display: none; }
+
+@media screen and (max-width:680px) {
+  ul.menu li:not(:first-child) {display: none;}
+  ul.menu li:last-child {
+ 	 display: inherit;
+ 	 float: right;
+  }
+ 
+  ul.menu {
+    float: right;
+    display: inline-block;
+  }
+  
+    ul.menu:hover {
+  	display: block;
+  	height: 300px;
+  	width: 300px;
+  	background-color: black;
+  	overflow: visible;
+  }
+}
+
+/* Slideshow */
+#meteor-slideshow { /* div */
+	margin: auto;
+}
+
+#meteor_nav { /* div */}
+
+#meteor-buttons a {}
+
+div.meteor-buttons {}
+
+/* Frontpage portfolio */
+div.ic_portfolio_row {
+	margin: auto;
+	margin-bottom: 20px;
+	margin-top: 2em;
+/*	background-color: rgba(0,80,255,0.4); */
+	min-height: 16em;
+	width: 1134px;
+}
+
+div.ic_portfolio_col {
+	padding: 0.8em 2em;
+	min-height: 16em;
+	border-top: 0.4em solid rgb(0,255,0);
+	box-shadow: 2px 2px 6px 0 rgba(0,0,0,0.4),0 2px 10px 0 rgba(0,0,0,0.4);
+	background-color: rgb(220,220,220);
+	color: rgb(19,0,77);
+}
+
+div.ic_portfolio_col:first-child {
+	margin-left: -2em;
+}
+div.ic_portfolio_col:nth-child(2) {
+	margin-left: 2em;
+	margin-right: 2em
+}
+div.ic_portfolio_col:last-child {
+	margin-right: -2em;
+}
+
+div.ic_portfolio_col:hover {
+	background-color: rgb(240,240,240);
+}
+
+/* TODO: Put responsive code together */
+@media all and ( min-width: 600px ) {
+	div.ic_portfolio_col {
+		float: left;
+		width: 33.3333333%;
+	}
+}
