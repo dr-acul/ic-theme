@@ -1,14 +1,20 @@
 /*
-Theme Name: increare
-Author: dr.acul@posteo.de
+Theme Name: IN|creare
+Theme URI: http://test.increare.de
+Author: the IN|creare team
+Author URI: http://www.increare.de
+Description: Theme for IN|creare
 Version: 0.01
-Tags: blue, green, white, dark, one-column, two-columns, three-colums, custom-header, custom-menu, translation-ready
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: blue, green, white, dark, one-column, two-columns, custom-header, custom-menu, translation-ready
+Text Domain: increare
 
 */
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin,latin-ext);
 
-html, body, header, nav, ul, li, div, a, h1, h2, h3, h4, h5, h6, p {
+html, body, header, nav, main, section, article, ul, li, div, a, h1, h2, h3, h4, h5, h6, p {
 	border: 0;
 	margin: 0;
 	padding: 0;
@@ -37,8 +43,32 @@ body {
 	clear: both;
 }
 
-/* start content below fixed header */
-header { margin-bottom: 7.4em; }
+/* same element */
+div#primary {
+	margin-top: 7.6em;
+}
+div.content-area {}
+
+/* general post style */
+div.post {
+	margin: 0 2em;
+	margin-bottom: 2em !important;
+	box-shadow: 2px 2px 6px 0 rgba(0,0,0,0.4),0 2px 10px 0 rgba(0,0,0,0.4);
+	background-color: rgb(220,220,220);
+	border-top: 0.4em solid rgb(0,255,0);
+}
+
+h1.post-title {
+	width: 100%;
+	background-color: rgb(19,0,77);
+	padding: 0.3em 1.2em;
+	font-size: 1.6em;
+}
+
+div.post p {
+	padding: 2em;
+	color: rgb(19,0,77);
+}
 
 #page {/*div */ }
 
@@ -174,43 +204,36 @@ div.meteor-buttons {}
 
 /* Frontpage portfolio */
 div.ic_portfolio_row {
-	margin-bottom: 20px;
 	margin-top: 2em;
-/*	background-color: rgba(0,80,255,0.4); */
 	margin-left: 4em;
 	margin-right: 4em;
 }
 
-div.ic_portfolio_col {
-	padding: 0.8em 2em;
-	min-height: 16em;
-	border-top: 0.4em solid rgb(0,255,0);
-	box-shadow: 2px 2px 6px 0 rgba(0,0,0,0.4),0 2px 10px 0 rgba(0,0,0,0.4);
-	background-color: rgb(220,220,220);
-	color: rgb(19,0,77);
+div.ic_portfolio_row .post {
+	margin: auto;
 }
 
-div.ic_portfolio_col:hover {
+div.ic_portfolio_row .post:hover {
 	background-color: rgb(240,240,240);
 }
 
 /* TODO: Put responsive code together */
 @media screen and ( min-width: 600px ) {
-	div.ic_portfolio_col {
+	div.ic_portfolio_row .post {
 		float: left;
 		width: 33.3333333%;
 	}
 	
-	div.ic_portfolio_col:first-child {
+	div.ic_portfolio_row .post:first-child {
 		margin-left: -2em;
 	}
 
-	div.ic_portfolio_col:nth-child(2) {
+	div.ic_portfolio_row .post:nth-child(2) {
 		margin-left: 2em;
 		margin-right: 2em
 	}
 
-	div.ic_portfolio_col:last-child {
+	div.ic_portfolio_row .post:last-child {
 		margin-right: -2em;
 	}
 }
@@ -226,13 +249,9 @@ div#footer {
 	width: 100%;
 	background-color: rgb(19,0,77);
 	border-top: 0.4em solid rgb(0,255,0);
-	padding-left: 2em;
-	padding-right: 2em;
-	padding-top: 2em;
 }
 
 div#footer ul.menu {
-	background-color: none;
 	padding-left: 1em;
 }
 
@@ -244,10 +263,9 @@ div#footer li.menu-item a {
 	
 }
 
+.widget-container { padding: 2em; }
+
 div#footer div {}
-
-.textwidget { width: 100%; }
-
 
 /* TODO: Put responsive code together */
 @media all and ( min-width: 600px ) {
@@ -256,6 +274,12 @@ div#footer div {}
 		width: 33.3333333%;
 	}
 }
+
+/* Unknow required elements */
+
+.sticky {}
+.gallery-caption {}
+..bypostauthor {}
 
 /* =WordPress Core
 -------------------------------------------------------------- */
