@@ -3,8 +3,8 @@
 /**
  * increare font-page layout
  * 
- * @package WordPress
- * @subpackage increare
+ * @package increare
+ * @subpackage increare-theme
  * @since increare 0.01
  * 
  */
@@ -17,7 +17,9 @@
 	
 <?php
 	if ( is_front_page() ) {
-		if ( function_exists( 'meteor_slideshow' ) ) { meteor_slideshow(); }
+		if ( function_exists( 'meteor_slideshow' ) ) { $meteor_slideshow = meteor_slideshow(); }
+		
+		if ( function_exists( 'start_ic_slider' ) ) { start_ic_slider(); }
 		
 		$portfolio_posts = array(
 				get_post( get_theme_mod( 'portfolio_selection_0') ),

@@ -1,10 +1,10 @@
 <?php
 
 /**
- * increare header layout
+ * IN|creare header layout.
  * 
- * @package WordPress
- * @subpackage increare
+ * @package increare
+ * @subpackage increare-theme
  * @since increare 0.01
  * 
  */
@@ -15,6 +15,7 @@
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo( 'stylesheet_url' ); ?>" media="screen">
 	<title><?php bloginfo( 'name' ); ?></title>
+	<!-- do we still need to load this here -->
 	<?php wp_enqueue_script("jquery"); ?>
 	<?php wp_head(); ?>
 </head>
@@ -22,8 +23,46 @@
 <body <?php body_class(); ?>>
 <header>
 	<div id="ic_s_header">
-		<span id="ic_s_header_contact">Phone: (+49)1268 785 623 - E-Mail: info@increare.de</span>
-		<span id="ic_s_header_socialnetwork">f - T - g+ - dw</span>
+		<span id="ic_s_header_contact">
+			<img class="ic_social_links" src="<?php echo get_template_directory_uri()
+			. '/images/Blue_White_icons/Phone.png'; ?> " /> (+49)1268 785 623
+			<img class="ic_social_links" src="<?php echo get_template_directory_uri()
+			. '/images/Blue_White_icons/E-Mail.png'; ?>" /> info@increare.de
+		</span>
+
+		<span id="ic_s_header_socialnetwork">
+<?php
+/* omitted check for social links,
+ * should be enabled when ic_select_iconset ist registered
+ * TODO: cleanup, rewrite, this is not a good way to do all that stuff...
+ */
+if ( get_theme_mod( 'ic_select_iconset' ) ) {
+	global $ic_social_links;
+
+	foreach ($ic_social_links as $key => $value) {
+		$link_to_icon = get_theme_mod( 'ic_select_iconset' )
+				. '/' . $key . '.png';
+		$hover_link_to_icon = get_theme_mod( 'ic_select_iconset' )
+				. '/' . $key . '_hover.png';
+?>
+			<a class="ic_social_links" href="<?php echo get_theme_mod( $key ) ?>">
+				<img id="<?php echo $key ?>" class="ic_social_links"
+					 src="<?php echo $link_to_icon ?>" />
+			</a>
+
+			<script type="text/javascript">
+				jQuery( '#<?php echo $key ?>').mouseover(function() {
+					jQuery( '#<?php echo $key ?>').attr("src", "<?php echo $hover_link_to_icon ?>");
+				} );
+				jQuery( '#<?php echo $key ?>').mouseout(function() {
+					jQuery( '#<?php echo $key ?>').attr("src", "<?php echo $link_to_icon ?>");
+				});
+			</script>
+<?php
+	}
+}
+?>
+		</span>
 	</div><!-- #ic_s_header -->
 </header>
 <header>

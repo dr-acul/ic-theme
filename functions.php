@@ -22,6 +22,44 @@ remove_action('wp_head', 'wlwmanifest_link');
 //disable admin bar
 add_filter('show_admin_bar', '__return_false');
 
+/* init social stuff
+ * "register" more iconsets here
+ * 'iconset_suffix' => 'iconset_name'
+ */
+
+function get_icon_path() {
+	$ic_iconset = array();
+	$img_dir = scandir(get_template_directory() . '/images');
+	
+	foreach( $img_dir as $path) {
+		$icon_dir_filter = strpos( $path, 'icons' ); 
+		if ( $icon_dir_filter ) { //path contains 'icons'
+			$new_path = get_template_directory_uri() . '/images/' . $path;
+			$ic_iconset[$new_path] =
+					str_replace('_', ' ',  substr( $path, 0, $icon_dir_filter-1 ) );
+		}
+	}
+	return $ic_iconset;
+}
+
+$ic_icon_suffix = array(
+	'_01.png'	=> 'jeans',
+	'_02.png'	=> 'blue - white',
+	'_03.png'	=> 'white - blue',
+);
+
+/* "register" morge social stuff here
+ * 'social_network_name' => 'social_network_link'
+ * social_network_link will be displayed as the placeholder property
+ */
+$ic_social_links = array(
+	'DaWanda'		=> 'Link to DaWanda',
+	'Facebook'		=> 'Link to Facebook',
+	'Twitter'		=> 'Link to Twitter',
+	'GooglePlus'	=> 'Link to Google plus',
+	'YouTube'		=> 'Link to YouTube',
+);
+
 //add footer sidebar feature
 
 function footer_widget_init() {
@@ -121,20 +159,55 @@ function portfolio_theme_customizer( $wp_customize ) {
 			) );
 	
 }
-
-//add Logo support
-function themeslug_theme_customizer( $wp_customize ) {
-	$wp_customize->add_section( 'themeslug_logo_section' , array(
-			'title' => __( 'Logo', 'themeslug' ),
-			'priority' => 30,
-			'description' => 'Upload a logo to replace the default site name and description in the header',
-	) );
-	$wp_customize->add_setting( 'themeslug_logo' );
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_logo', array(
-			'label' => __( 'Logo', 'themeslug' ),
-			'section' => 'themeslug_logo_section',
-			'settings' => 'themeslug_logo',
-	) ) );
-}
 add_action('customize_register', 'portfolio_theme_customizer');
-?>
+
+/* add social customization (iconsets, links & source */
+function ic_social_icon_customizer( $wp_customize ) {
+
+	global $ic_social_links, $ic_icon_suffix;
+	
+	$wp_customize->add_section( 'ic_social_icon_customizer', array(
+		'title'			=> __('Social settings', 'increaretd'),
+		'description'	=> __('Select social iconsets and set links.', 'increaretd'),
+	) );
+
+	$wp_customize->add_setting( 'ic_select_iconset', array(
+		'type'					=> 'theme_mod',
+		'default'				=> 'empty',
+		'transport'				=> 'refresh',
+	) );
+
+	$wp_customize->add_control( 'ic_select_iconset', array(
+		'label'		=> __( 'Select iconset.', 'incerearetd' ),
+		'section'	=> 'ic_social_icon_customizer',
+		'type'		=> 'select',
+		'choices'	=> get_icon_path(),
+	) );
+
+	foreach ($ic_social_links as $setting_key => $social_link) {
+
+		$label = 'Set ' . $setting_key . ' link';
+
+		$wp_customize->add_setting( $setting_key, array(
+			'type'		=> 'theme_mod',
+			'default'	=>	$setting_key,
+			'transport'	=>	'refresh',
+		) );
+		
+		$wp_customize->add_control( $setting_key, array(
+			'label'			=> __( $label, 'increaretd'),
+			'section'		=> 'ic_social_icon_customizer',
+			'type'			=> 'text',
+		) );
+	}
+}
+
+add_action( 'customize_register', 'ic_social_icon_customizer' );
+
+function ic_social_link_customizer() {}
+
+add_action( 'customize_register', 'ic_social_link_customizer' );
+
+function ic_head_contact_customizer() {}
+
+add_action( 'customize_register', 'ic_head_contact_customizer' );
