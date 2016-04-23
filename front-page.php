@@ -1,5 +1,4 @@
 <?php
-
 /**
  * increare font-page layout
  * 
@@ -9,15 +8,13 @@
  * 
  */
  ?>
- 
  <?php get_header(); ?>
 
 <div id="primary" class="content-area">
-	<main role="main">
+	<main>
 	
 <?php
 	if ( is_front_page() ) {
-		if ( function_exists( 'meteor_slideshow' ) ) { $meteor_slideshow = meteor_slideshow(); }
 		
 		if ( function_exists( 'start_ic_slider' ) ) { start_ic_slider(); }
 		
@@ -27,6 +24,8 @@
 				get_post( get_theme_mod( 'portfolio_selection_2') ),
 		);
 /* TODO: implement multi-row portfolio -> 0.04 */ 
+
+		if ( $portfolio_posts[0] | $portfolio_posts[1] | $portfolio_posts[2] ) {
 ?>
 		<div class="ic_portfolio_row clearfix">
 		<?php
@@ -41,7 +40,8 @@
 		<?php endforeach; ?>
 		</div><!-- .ic_portfolio_row -->
 		<?php
-	}
+	}	
+}
 ?>
 </section>
 	</main>

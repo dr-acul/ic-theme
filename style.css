@@ -15,7 +15,9 @@ Text Domain: increaretd
 
 /* ### 1.   Normalize
 *  ### 2.   =WordPress Core  
-*
+*  ### 3.	Site Header
+*  ### 3.1		Small Header
+*  ### 3.2		Logo & Menu Header
 */
 
 /* 1.
@@ -582,14 +584,18 @@ body {
 	clear: both;
 }
 
-/* same element */
-div#primary {
-	margin-top: 7.6em;
+/* content starts here (headers are fixed) */
+#primary {
+	margin-top: 8em;
 }
+
 div.content-area {}
 
-/* general post style */
-div.post {
+/* general post & page style
+ * body hase .page class too, so the margrin will be wrong for pages 
+ */
+div.page,
+.post {
 	margin: 0 2em;
 	margin-bottom: 2em !important;
 	box-shadow: 2px 2px 6px 0 rgba(0,0,0,0.4),0 2px 10px 0 rgba(0,0,0,0.4);
@@ -597,70 +603,97 @@ div.post {
 	border-top: 0.4em solid rgb(0,255,0);
 }
 
-h1.post-title {
+.post-title,
+.page-title {
 	width: 100%;
 	background-color: rgb(19,0,77);
 	padding: 0.3em 1.2em;
 	font-size: 1.6em;
 }
 
-div.post p {
+.post p,
+.page p {
 	padding: 2em;
 	color: rgb(19,0,77);
 }
 
-#page {/*div */ }
-
-/* small header */
+/*
+ * ### 3 Site Header
+ *
+ * ### 3.1 Small Header
+ */
 div#ic_s_header {
 	position: fixed;
 	top: 0;
 	width: 100%;
 	height: 2em;
 	line-height: 2em;
-	font-size: 0.8em;
 	background-color: rgb(19,0,77);
-	z-index: 9999;
-	
+	z-index: 999;	
 }
-
-span#ic_s_header_contact {
-	padding-left: 2.5em;
+#ic_s_header a:hover {
+	color: rgb(0,255,0);
 }
-
+#ic_s_header_contact,
+#ic_small_header_social,
+.ic_small_header_contact_link,
+.ic_small_header_contact_text,
+.ic_small_header_social_link {
+	line-height: inherit;
+	display: inline-block;
+}
+/* <span> surrounding the cantact stuff */
+#ic_s_header_contact {
+	position: absolute;
+	left: 2.5em;
+}
+/* <a> surrounding the contact links */
+.ic_small_header_contact_link {}
+/* <span> after the icon surrunding the link text */
+.ic_small_header_contact_text {
+	padding-left: 0.2em;
+	margin-right: 1em;
+	line-height: inherit;
+}
 /* Social link icons */
-
-#ic_s_header_socialnetwork {
+#ic_small_header_social {
 	position: absolute;
 	right: 2.5em;
 }
-
-.ic_social_links {
-	height: 1.4em;
-	width: 1.4em;
-	margin-left: 1em;
-	vertical-align: middle;
+.ic_small_header_social_link:not(:last-child) {
+	margin-right: 1em;
+}
+/* social link icons */
+.ic_small_header_social_link i {
+	line-height: inherit;
+	font-size: 1.4em;
 }
 
-/* Logo/Menu Header */
+/*
+ * ### 3.2 Logo & Menu Header
+ */
 
-div#ic_header {
-	position: fixed;
-	top: 1.6em;
-	width: 100%;
+#ic_header,
+#ic_logo,
+#ic_logo_img {
 	height: 4em;
-/*  background-color: rgba(0,80,255,0.8); */
+	line-height: 4em;
+}
+#ic_header {
+	position: fixed;
+	top: 2em;
+	width: 100%;
 	background-color: rgb(19,0,77);
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     z-index: 9999;
     border-bottom: 0.4em solid rgba(0,255,0,0.8);
 }
 
-div#ic_logo { float: left; }
+#ic_logo { float: left; }
 
-div#ic_logo_img { float: left; }
+#ic_logo_img { float: left; }
 
-div#ic_logo_img img { height: 64px; }
+#ic_logo_img img { height: 58px; }
 
 #ic_logo h1, #ic_logo p {
 	display: inline;
@@ -822,7 +855,7 @@ div#footer div {}
 	}
 }
 
-/* Unknow required elements */
+/* Unknow required (by theme checker) elements */
 
 .sticky {}
 .gallery-caption {}

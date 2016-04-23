@@ -1,5 +1,4 @@
 <?php
-
 /**
  * increare functions and definitions
  * 
@@ -35,6 +34,34 @@ remove_action('wp_head', 'wlwmanifest_link');
  */
 add_filter('show_admin_bar', '__return_false');
 
+/*
+ * Load FontAwesome from CDN
+ * 
+ */
+function ic_theme_register_styles() {
+	wp_register_style('ic-theme-stylesheet', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css');
+	wp_enqueue_style('ic-theme-stylesheet');
+}
+
+add_action('wp_print_styles', 'ic_theme_register_styles');
+
+/*
+ * Register javascript
+ *
+function ic_theme_register_js() {
+	wp_enqueue_script('increare-js', get_template_directory_uri() . '/js/increare.js', array('jquery'));
+}
+add_action('wp_print_scripts', 'ic_theme_register_js');
+*/
+
+/*
+ * Register logo image sice
+ */
+function ic_theme_register_image_size() {
+    add_image_size( 'custom_logo', '250', '58', array( 'top', 'center' ) );
+}
+add_action( 'after_setup_theme', 'ic_theme_register_image_size' );
+
 /* 
  * Initialize social links and icons
  * Iconsets are registered automatically.
@@ -61,14 +88,13 @@ function get_icon_path() {
 
 /* Register social network links
  * 'social_network_name' => 'social_network_link'
- * TODO: 'social_network_link' should be displayed as the placeholder property
  */
 $ic_social_links = array(
-	'DaWanda'		=> 'Link to DaWanda',
-	'Facebook'		=> 'Link to Facebook',
-	'Twitter'		=> 'Link to Twitter',
-	'GooglePlus'	=> 'Link to Google plus',
-	'YouTube'		=> 'Link to YouTube',
+	'DaWanda'		=> '<i class="fa fa-heart" aria-hidden="true"></i>',
+	'Facebook'		=> '<i class="fa fa-facebook" aria-hidden="true"></i>',
+	'Twitter'		=> '<i class="fa fa-twitter" aria-hidden="true"></i>',
+	'GooglePlus'	=> '<i class="fa fa-google-plus" aria-hidden="true"></i>',
+	'YouTube'		=> '<i class="fa fa-youtube" aria-hidden="true"></i>',
 );
 
 /*
@@ -176,50 +202,35 @@ add_action('customize_register', 'portfolio_theme_customizer');
 /* add social customization (iconsets, links & source */
 function ic_social_icon_customizer( $wp_customize ) {
 
-	global $ic_social_links, $ic_icon_suffix;
+	global $ic_social_links;
 	
 	$wp_customize->add_section( 'ic_social_icon_customizer', array(
 		'title'			=> __('Social settings', 'increaretd'),
 		'description'	=> __('Select social iconsets and set links.', 'increaretd'),
 	) );
 
-	$wp_customize->add_setting( 'ic_select_iconset', array(
+	$wp_customize->add_setting( 'ic_select_icon_hover', array(
 		'type'					=> 'theme_mod',
-		'default'				=> 'empty',
+		'default'				=> '#00ff00',
 		'transport'				=> 'refresh',
 	) );
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'ic_select_icon_hover', array(
+		'label'		=>	__( 'Select header :hover color', 'increaretd' ),
+		'section'	=>	'ic_social_icon_customizer',
+		'settings'	=>	'ic_select_icon_hover',
+	) ) );
 
-	$wp_customize->add_control( 'ic_select_iconset', array(
-		'label'		=> __( 'Select iconset.', 'incerearetd' ),
-		'section'	=> 'ic_social_icon_customizer',
-		'type'		=> 'select',
-		'choices'	=> get_icon_path(),
-	) );
-
-	foreach ($ic_social_links as $setting_key => $social_link) {
-
-		$label = 'Set ' . $setting_key . ' link';
-
+	foreach (array_keys($ic_social_links) as $setting_key ) {
 		$wp_customize->add_setting( $setting_key, array(
 			'type'		=> 'theme_mod',
-			'default'	=>	$setting_key,
-			'transport'	=>	'refresh',
+			'default'	=> '',
+			'transport'	=> 'refresh',
 		) );
-		
 		$wp_customize->add_control( $setting_key, array(
-			'label'			=> __( $label, 'increaretd'),
-			'section'		=> 'ic_social_icon_customizer',
-			'type'			=> 'text',
+			'label'		=> __( $setting_key, 'increaretd' ),
+			'section'	=> 'ic_social_icon_customizer',
+			'type'		=> 'text',
 		) );
 	}
 }
-
 add_action( 'customize_register', 'ic_social_icon_customizer' );
-
-function ic_social_link_customizer() {}
-
-add_action( 'customize_register', 'ic_social_link_customizer' );
-
-function ic_head_contact_customizer() {}
-
-add_action( 'customize_register', 'ic_head_contact_customizer' );
