@@ -9,24 +9,41 @@
  * 
  */
  
-//add theme supports
+//add theme supports & post formats
 add_theme_support( 'custom-background' );
 add_theme_support( 'custom-logo' );
 
-// clean wp header
-// source: https://digwp.com/2010/03/wordpress-functions-php-template-custom-functions/
+/**
+ * Enables the Excerpt meta box in Page edit screen.
+ * Source: WP-Codex
+ */
+function wpcodex_add_excerpt_support_for_pages() {
+	add_post_type_support( 'page', 'excerpt' );
+}
+add_action( 'init', 'wpcodex_add_excerpt_support_for_pages' );
+
+/*
+ * Clean WP header
+ * Source: https://digwp.com/2010/03/wordpress-functions-php-template-custom-functions/
+ */
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
 
-//disable admin bar
+/*
+ * Disable admin bar on standalone page
+ */
 add_filter('show_admin_bar', '__return_false');
 
-/* init social stuff
- * "register" more iconsets here
- * 'iconset_suffix' => 'iconset_name'
+/* 
+ * Initialize social links and icons
+ * Iconsets are registered automatically.
+ * You need to create a new subfolder called 'Your_Iconset_icons' in the theme's
+ * image folder to make get_icon_path() look for it. Put your icons in this
+ * folder with the name of the sozial icon/link you want to add.
+ * 
+ * @return	returns a list of icon paths for sozial links
  */
-
 function get_icon_path() {
 	$ic_iconset = array();
 	$img_dir = scandir(get_template_directory() . '/images');
@@ -42,15 +59,9 @@ function get_icon_path() {
 	return $ic_iconset;
 }
 
-$ic_icon_suffix = array(
-	'_01.png'	=> 'jeans',
-	'_02.png'	=> 'blue - white',
-	'_03.png'	=> 'white - blue',
-);
-
-/* "register" morge social stuff here
+/* Register social network links
  * 'social_network_name' => 'social_network_link'
- * social_network_link will be displayed as the placeholder property
+ * TODO: 'social_network_link' should be displayed as the placeholder property
  */
 $ic_social_links = array(
 	'DaWanda'		=> 'Link to DaWanda',
@@ -60,8 +71,9 @@ $ic_social_links = array(
 	'YouTube'		=> 'Link to YouTube',
 );
 
-//add footer sidebar feature
-
+/*
+ * Add footer sidebar feature
+ */
 function footer_widget_init() {
 
 	register_sidebar( array(
