@@ -25,7 +25,9 @@
 		);
 /* TODO: implement multi-row portfolio -> 0.04 */ 
 
-		if ( $portfolio_posts[0] | $portfolio_posts[1] | $portfolio_posts[2] ) {
+		if ( !empty( $portfolio_posts[0] ) | 
+			 !empty( $portfolio_posts[1] ) |
+			 !empty( $portfolio_posts[2] ) ) {
 ?>
 		<div class="ic_portfolio_row clearfix">
 		<?php

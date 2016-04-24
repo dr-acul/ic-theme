@@ -689,11 +689,15 @@ div#ic_s_header {
     border-bottom: 0.4em solid rgba(0,255,0,0.8);
 }
 
-#ic_logo { float: left; }
+#ic_logo {
+	position: absolute;
+}
 
-#ic_logo_img { float: left; }
-
-#ic_logo_img img { height: 58px; }
+/* wp theme_mod( 'custom-logo ') style */
+.size-custom_logo { 
+	height: 58px;
+	margin-left: 2em;
+}
 
 #ic_logo h1, #ic_logo p {
 	display: inline;
@@ -705,17 +709,27 @@ div#ic_s_header {
 #ic_logo p { line-height: 3.6em; } /* remove border from line height */
 
 /* Top Menu */
-header ul.menu {
-	display: block;
-	width: auto;
-	z-index: 99999;
-	list-style-type: none;
-	float: right;
+
+.ict_main_menu_container,
+.ict_main_menu {
+	height: 4em;
+	line-height: 4em;
 }
 
-header li.menu-item { float: left; }
+.ict_main_menu_container {
+	position: absolute;
+	right: 2em;
+}
+.ict_main_menu {
+	display: table-row;
+	width: auto;
+	z-index: 9999;
+	list-style-type: none;
+}
 
-header li.menu-item a {
+.ict_main_menu .menu-item { display: table-cell; }
+
+.ict_main_menu .menu-item a {
 	display: block;
 	text-decoration: none;
 	padding: 0 1em 0 1em;
@@ -725,12 +739,16 @@ header li.menu-item a {
 	height: 4em;
 }
 
-header li.menu-item a:hover {
+.ict_main_menu .menu-item a:hover {
 /*	background-color: rgb(19,0,77); */
 /*	background-color: rgba(255,255,255,0.2); */
 /*	border-bottom: 0.4em solid rgb(54,0,217); */
 	background-color: rgba(255,255,255,0.2);
 	z-index: 9999;
+}
+
+.ict_main_menu .current-menu-item {
+	background-color: rgba(255,255,255,0.2);
 }
 
 /* being responsive - put responsive code together!!!*/
@@ -739,32 +757,28 @@ header li.menu-item a:hover {
 	
 	#ic_logo p { display: none; }
 	
-	header li.menu-item { clear: both; }
+	.ict_main_menu .menu-item { clear: both; }
 	
-	header li.menu-item:fist-child:before {
-		content: "Peter";
-	}
-	
-	header li.menu-item a {
+	.ict_main_menu .menu-item a {
 		padding: 0 1em 0 0;
 		border: 0;
 	}
 	
-	header ul.menu {
+	.ict_main_menu {
 		height: 4em;
 		overflow: hidden;
 		float: right;
 		display: inline-block;
 	}
 	
-	header ul.menu:hover {
+	ict_main_menu:hover {
 		height: auto;
 		display: block;
 		overflow: visible;
 		background-color: rgb(19,0,77);
 	}
 	
-	header ul.menu:hover li a{
+	ict_main_menu:hover li a{
 		width: 246px;
 		text-align: right;
 		display: block;
@@ -858,5 +872,22 @@ div#footer div {}
 /* Unknow required (by theme checker) elements */
 
 .sticky {}
-.gallery-caption {}
 .bypostauthor {}
+
+
+/* 4.1 Gallery settings
+ * REMOVE CLASSE FROM t
+ */
+
+.gallery {}
+
+.gallery-size-full {
+	overflow: hidden;
+	margin: 0 2em !important; /* overwrite inline style, why? */
+}
+
+.gallery-row {}
+
+.gallery-item {}
+
+.gallery-caption {}

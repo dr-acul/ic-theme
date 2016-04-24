@@ -83,7 +83,12 @@ if ( get_theme_mod( 'ic_select_icon_hover' ) ) {
 
 		<nav>
 
-		<?php wp_nav_menu(); ?>
+		<?php wp_nav_menu( array(
+			'menu_class'		=> 'ict_main_menu clearfix',
+			'container_class'	=> 'ict_main_menu_container',
+			'theme_location'	=> 'ict_main_menu'
+			
+		) ); ?>
 
 		</nav>
 

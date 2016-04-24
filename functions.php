@@ -58,9 +58,14 @@ add_action('wp_print_scripts', 'ic_theme_register_js');
  * Register logo image sice
  */
 function ic_theme_register_image_size() {
-    add_image_size( 'custom_logo', '250', '58', array( 'top', 'center' ) );
+    add_image_size( 'custom_logo', '300', '58', array( 'top', 'center' ) );
 }
 add_action( 'after_setup_theme', 'ic_theme_register_image_size' );
+
+/*
+ * Register menu's
+ */
+register_nav_menu( 'ict_main_menu', __( 'Header Menu (main)', 'increaetd' ) );
 
 /* 
  * Initialize social links and icons
