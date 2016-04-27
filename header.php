@@ -12,11 +12,10 @@
 <html <?php language_attributes(); ?> >
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo( 'stylesheet_url' ); ?>" media="screen">
 	<title><?php bloginfo( 'name' ); ?></title>
-	<!-- do we still need to load this here -->
-	<?php wp_enqueue_script("jquery"); ?>
 	<?php wp_head(); ?>
 </head>
 
@@ -52,6 +51,7 @@ if ( get_theme_mod( 'ic_select_icon_hover' ) ) {
 		<?php }
 	}?>
 
+//rewrite to css
 <script type="text/javascript">
 	jQuery( ".<?php echo $link_class ?>" ).hover(function() {
 		jQuery( this ).css( "color", "<?php echo get_theme_mod( 'ic_select_icon_hover' ); ?>" );
@@ -64,33 +64,34 @@ if ( get_theme_mod( 'ic_select_icon_hover' ) ) {
 		</span><!-- #ic_small_header_social -->
 	</div><!-- #ic_s_header -->
 </header>
-<header>
-	<div id="ic_header">
-		<div id="ic_logo">
-		<?php
-		?>
-		<?php if ( get_theme_mod( 'custom_logo' ) ) : ?>
-			<div id="ic_logo_img">
-				<a href="<?php bloginfo( 'url' ); ?>">
-					<?php echo wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'custom_logo' ); ?>
-				</a>
-			</div><!-- #ic_logo_img -->
-		<?php else : ?>
-			<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name'); ?></a></h1>
-			<p><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'description' ); ?></a></p>
-		<?php endif; ?>
-		</div><!-- #ic_logo -->
-
-		<nav>
-
-		<?php wp_nav_menu( array(
-			'menu_class'		=> 'ict_main_menu clearfix',
-			'container_class'	=> 'ict_main_menu_container',
-			'theme_location'	=> 'ict_main_menu'
-			
-		) ); ?>
-
-		</nav>
-
-	</div><!-- #ic_header -->
-</header>
+<!-- Static navbar - by bootstrap -->
+<!-- removed bootstrap classes (for testing):  -->
+<nav id="ict_header" class="navbar navbar-default navbar-static-top">
+  <div class="container">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	<?php if ( get_theme_mod( 'custom_logo' ) ) : ?>
+		<a class="navbar-brand" href="<?php bloginfo( 'url' ); ?>">
+			<?php echo wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'custom_logo' ); ?>
+		</a>
+	<?php else : ?>
+		<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+			<h1><?php bloginfo( 'name'); ?></h1>
+			<p><?php bloginfo( 'description' ); ?></p>
+		</a>
+	<?php endif; ?>
+	</div><!-- .navbar-header -->
+	<?php wp_nav_menu( array(
+		'container_id'		=> 'navbar',
+		'container_class'	=> 'navbar-collapse collapse',
+		'menu_class'		=> 'nav navbar-nav navbar-right',
+		'theme_location'	=> 'ict_main_menu'
+	) ); ?>
+<!-- <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li> -->
+  </div>
+</nav><!-- #ic_header -->

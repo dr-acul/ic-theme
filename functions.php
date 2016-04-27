@@ -39,20 +39,19 @@ add_filter('show_admin_bar', '__return_false');
  * 
  */
 function ic_theme_register_styles() {
-	wp_register_style('ic-theme-stylesheet', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css');
-	wp_enqueue_style('ic-theme-stylesheet');
+	wp_register_style('font-awesome-cdn', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css');
+	wp_enqueue_style('font-awesome-cdn');
 }
 
 add_action('wp_print_styles', 'ic_theme_register_styles');
 
 /*
  * Register javascript
- *
+ */
 function ic_theme_register_js() {
-	wp_enqueue_script('increare-js', get_template_directory_uri() . '/js/increare.js', array('jquery'));
+	wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.js', array('jquery'));
 }
 add_action('wp_print_scripts', 'ic_theme_register_js');
-*/
 
 /*
  * Register logo image sice

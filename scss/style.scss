@@ -1,0 +1,333 @@
+/*
+Theme Name: IN|creare
+Theme URI: http://test.increare.de
+Author: the IN|creare team
+Author URI: http://www.increare.de
+Description: Theme for IN|creare
+Version: 0.01
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: blue, green, white, dark, one-column, two-columns, custom-header, custom-menu, translation-ready
+Text Domain: increaretd
+*/
+
+/* TOC 
+*  1 - Imports
+*  1.1 - bootstrap breakpoints
+*  1.2 - Site Root
+*  2 - Site Header
+*  2.1 - Small Header
+*  2.2 - Logo & Menu Header
+*/
+
+
+/*	1 - Imports */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin,latin-ext);
+@import 'bootstrap.scss';
+@import 'WordPress_core.scss';
+
+/* 1.1 - Variables */
+$std_white: WhiteSmoke;
+$brand_dark: hsl(255,100,15);
+
+$site_width: 100%;
+
+$std_text_color: $brand_dark;
+$header_text_color: $std_white;
+
+$std_margin: 28px;
+$std_border_width: 5px;
+$small_header_height: 28px;
+$header_height: 58px;
+
+/* 1.1 - bootstrap brakpoints */
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+$screen-phone:		480px !default;
+// Small screen / tablet
+$screen-sm-min:		768px !default;
+// Medium screen / desktop
+$screen-md-min:		992px !default;
+// Large screen / wide desktop
+$screen-lg-min:		1200px !default;
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:		($screen-sm-min - 1) !default;
+$screen-sm-max:		($screen-md-min - 1) !default;
+$screen-md-max:		($screen-lg-min - 1) !default;
+
+/* 1.2 - Site Root */
+body {
+	margin-top: $small_header_height + $header_height + $std_margin; // start body below fixed headers
+}
+
+/*
+ * ### 3 Site Header
+ *
+ * ### 3.1 Small Header
+ */
+#ic_s_header {
+  position: fixed;
+  top: 0;
+  width: $site_width;
+  height: $small_header_height;
+  line-height: $small_header_height;
+  background-color: $brand_dark;
+  z-index: 999;
+  & a { color: $std_white; }
+  & a:hover { color:  lighten($brand_dark, 20);}
+}
+
+#ic_s_header_contact,
+#ic_small_header_social,
+.ic_small_header_contact_link,
+.ic_small_header_contact_text,
+.ic_small_header_social_link {
+  line-height: inherit;
+  display: inline-block;
+}
+
+/* <span> surrounding the contact stuff */
+#ic_s_header_contact {
+  position: absolute;
+  left: 2.5em;
+}
+
+/* <span> after the icon surrunding the link text */
+.ic_small_header_contact_text {
+  padding-left: 0.2em;
+  margin-right: 1em;
+}
+
+/* Social link icons */
+#ic_small_header_social {
+  position: absolute;
+  right: 2.5em;
+}
+
+.ic_small_header_social_link:not(:last-child) {
+  margin-right: 1em;
+}
+
+/* social link icons */
+.ic_small_header_social_link i {
+  line-height: inherit;
+  font-size: 1.4em;
+}
+
+/*
+ * ### 3.2 Logo & Menu Header
+ */
+#ict_header {
+	position: fixed;
+	top: $small_header_height;
+	width: $site_width;
+	background-color: $brand_dark;
+	/* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */
+	z-index: 9999;
+	border-bottom: $std_border_width solid rgba(0, 255, 0, 0.8);
+	height: $header_height;
+}
+
+/* reset bootstrap first */
+.navbar-brand {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+// check for breakpoints
+.navbar-right {}
+
+.navbar-header,
+.navbar-collapse,
+.navbar-nav {}
+.navbar-default .navbar-nav > li:last-child a {
+	padding-right: $std-margin + 15px;
+}
+.navbar-default .navbar-nav > li > a {
+	color: $std_white;
+	height: $header_height;
+	&:hover {
+		background-color: red;
+	}
+	
+	@media screen and (min-width: $screen-sm-min) {
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+	
+	@media screen and (min-width: $screen-md-min) {
+		font-size: 1em;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	
+	@media screen and (min-width: $screen-lg-min) {
+		font-size: 1.3em;
+		height: $header_height;
+	}
+}
+
+#ic_logo {
+  position: absolute;
+}
+
+/* wp theme_mod( 'custom-logo ') style */
+.size-custom_logo {
+  height: 58px;
+  margin-left: 2em;
+}
+
+#ic_logo h1, #ic_logo p {
+  display: inline;
+  padding-left: 1em;
+}
+
+#ic_logo h1 {
+  line-height: 1.8em;
+}
+
+/* remove boder from line height */
+#ic_logo p {
+  line-height: 3.6em;
+}
+
+/* Top Menu */
+
+.ict_header .menu-item a {
+  text-decoration: none;
+  padding: 0 1em 0 1em;
+  font-weight: bold;
+  border-bottom: 0.4em solid rgba(0, 255, 0, 0.4);
+  line-height: 3.6em;
+  /* remove border from line height */
+  height: 4em;
+}
+
+.ict_header .menu-item a:hover {
+  /*	background-color: rgb(19,0,77); */
+  /*	background-color: rgba(255,255,255,0.2); */
+  /*	border-bottom: 0.4em solid rgb(54,0,217); */
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 9999;
+}
+
+.ict_header .current-menu-item {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* general post & page style
+ * body hase .page class too, so the margrin & color will be wrong for pages 
+ */
+.post,
+div.page { // body has the .page class too, so be more specific
+  margin: 0 2em;
+  margin-bottom: 2em !important;
+  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.4), 0 2px 10px 0 rgba(0, 0, 0, 0.4);
+  background-color: gainsboro;
+  border-top: 0.4em solid lime;
+}
+
+.post-title,
+.page-title {
+  width: $site_width;
+  background-color: $brand_dark;
+  color: $header_text_color;
+  padding: 0.3em 1.2em;
+  font-size: 1.6em;
+}
+
+.post p,
+div.page p {
+  padding: 2em;
+  color: $brand_dark;
+}
+
+h1.post-title {
+  margin: 0;
+}
+
+/* Frontpage portfolio */
+div.ic_portfolio_row {
+  margin-top: 2em;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+div.ic_portfolio_row .post {
+  margin: auto;
+}
+
+div.ic_portfolio_row .post:hover {
+  background-color: #f0f0f0;
+}
+
+/* TODO: Put responsive code together */
+@media screen and (min-width: 600px) {
+  div.ic_portfolio_row .post {
+    float: left;
+    width: 33.3333333%;
+  }
+
+  div.ic_portfolio_row .post:first-child {
+    margin-left: -2em;
+  }
+
+  div.ic_portfolio_row .post:nth-child(2) {
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+
+  div.ic_portfolio_row .post:last-child {
+    margin-right: -2em;
+  }
+}
+@media screen and (max-width: 600px) {
+  div.ic_portfolio_col:not(:last-child) {
+    margin-bottom: 2em;
+  }
+}
+/* footer stuff */
+div#footer {
+  width: 100%;
+  background-color: #13004d;
+  border-top: 0.4em solid lime;
+}
+
+div#footer ul.menu {
+  padding-left: 1em;
+}
+
+div#footer li.menu-item {
+  list-style: none;
+}
+
+div#footer li.menu-item a {
+  display: inline;
+  background: none;
+}
+
+.widget-container {
+  padding: 2em;
+}
+
+/* TODO: Put responsive code together */
+@media all and (min-width: 600px) {
+  div#footer div.widget-container {
+    float: left;
+    width: 33.3333333%;
+  }
+}
+/* Unknow required (by theme checker) elements */
+/* 4.1 Gallery settings
+ * REMOVE CLASSE FROM t
+ */
+.gallery-size-full,
+.gallery-size-large {
+  overflow: hidden;
+  margin: 0 2em !important;
+  /* overwrite inline style, why? */
+}
