@@ -20,6 +20,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<div class="testing"></div>
 <header>
 	<div id="ic_s_header">
 		<span id="ic_s_header_contact">
@@ -51,7 +52,7 @@ if ( get_theme_mod( 'ic_select_icon_hover' ) ) {
 		<?php }
 	}?>
 
-//rewrite to css
+<!-- rewrite to css -->
 <script type="text/javascript">
 	jQuery( ".<?php echo $link_class ?>" ).hover(function() {
 		jQuery( this ).css( "color", "<?php echo get_theme_mod( 'ic_select_icon_hover' ); ?>" );
@@ -64,34 +65,35 @@ if ( get_theme_mod( 'ic_select_icon_hover' ) ) {
 		</span><!-- #ic_small_header_social -->
 	</div><!-- #ic_s_header -->
 </header>
-<!-- Static navbar - by bootstrap -->
-<!-- removed bootstrap classes (for testing):  -->
-<nav id="ict_header" class="navbar navbar-default navbar-static-top">
-  <div class="container">
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
+<nav>
+	<div id="ict_header">
+		<div id="ict_brand_wrapper">
+			<?php if ( get_theme_mod( 'custom_logo' ) ) : ?><!-- image -->
+			<a id="ict_brand_link" href="<?php bloginfo( 'url' ); ?>">
+				<?php $post_id = get_theme_mod( 'custom_logo' ); ?>
+				<img src="<?php echo wp_get_attachment_url( $post_id ); ?>"
+					 alt="<?php echo get_the_title( $post_id ); ?>" />
+			</a><!-- #ict_brand_link -->
+			<?php else : ?> <!-- text --> 
+			<a id="ict_brand_link" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<h1><?php bloginfo( 'name'); ?></h1>
+				<p><?php bloginfo( 'description' ); ?></p>
+			</a><!-- #ict_brand_link -->
+			<?php endif; ?>
+		</div><!-- #ict_brand_wrapper -->
+		<!-- TODO write scritp -->
+		<button id="ict_navbar_button" type="button" class="collapsed" aria-expanded="false" aria-controls="navbar">
+			<i class="fa fa-bars" aria-hidden="true"></i>
+<!--
+			<span class="ict_icon_bar"></span>
+			<span class="ict_icon_bar"></span>
+			<span class="ict_icon_bar"></span>
+-->
 		</button>
-	<?php if ( get_theme_mod( 'custom_logo' ) ) : ?>
-		<a class="navbar-brand" href="<?php bloginfo( 'url' ); ?>">
-			<?php echo wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'custom_logo' ); ?>
-		</a>
-	<?php else : ?>
-		<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-			<h1><?php bloginfo( 'name'); ?></h1>
-			<p><?php bloginfo( 'description' ); ?></p>
-		</a>
-	<?php endif; ?>
-	</div><!-- .navbar-header -->
-	<?php wp_nav_menu( array(
-		'container_id'		=> 'navbar',
-		'container_class'	=> 'navbar-collapse collapse',
-		'menu_class'		=> 'nav navbar-nav navbar-right',
-		'theme_location'	=> 'ict_main_menu'
-	) ); ?>
-<!-- <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li> -->
-  </div>
-</nav><!-- #ic_header -->
+		<?php wp_nav_menu( array(
+			'container_id'		=> 'ict_main_menu_container',
+			'menu_id'			=> 'ict_main_menu',
+			'theme_location'	=> 'ict_main_menu'
+		) ); ?>
+	</div><!-- #ic_header -->
+</nav>

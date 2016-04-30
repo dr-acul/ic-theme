@@ -1,0 +1,105 @@
+// Colors
+
+// / Brands color
+// / DOC: $brand-color-[tag|state] - tag: a|p|h1|..., state: hover|focus|...
+$brand-main-color:			hsl(255,100%,15%);
+$brand-second-color:		hsl(120,100%,50%);
+$brand-third-color:			hsl(0,0%,96%);
+$brand-main-light:			lighten($brand-main-color, 10); // light
+$brand-main-dark:			darken($brand-main-color, 10); // dark
+$brand-color-a:				$brand-main-light;
+$brand-color-ah:			$brand-main-dark;
+$brand-color-p:				$brand-main-color;
+$brand-color-h:				$brand-third-color;
+
+// / Grey base
+$grey-base:					hsl(0,0%,50%);
+$grey-light:				lighten($grey-base, 30);
+$grey-dark:					darken($grey-base, 30);
+
+// / Background color
+$light-background: 0;
+$dark-background: 0;
+
+$std_white: WhiteSmoke;
+$brand_dark: hsl(255,100,15);
+$brand_light: lighten($brand_dark, 10);
+
+// Typography
+// / Font types
+// / Font sizes
+
+$space_normal: 28px;
+$space_small: $space_normal * 0.6;
+$space_big: $space_normal * 1.8;
+
+$main_menu_item_padding: $space_normal;
+
+$layer: 99999;
+
+$smaller: 0.6;
+$bigger: 1.8;
+
+$site_width: 100%;
+
+$std_text_color: $brand_dark;
+$header_text_color: $std_white;
+
+$border_width: 5px;
+$small_header_height: 28px;
+
+$green_border: $border_width solid lime;
+
+// Brakpoints
+// / Small screen / tablet
+$screen-sm-min:		768px !default;
+// / Medium screen / desktop
+$screen-md-min:		992px !default;
+// / Large screen / wide desktop
+$screen-lg-min:		1200px !default;
+// / So media queries don't overlap when required, provide a maximum
+$screen-xs-max:		($screen-sm-min - 1) !default;
+$screen-sm-max:		($screen-md-min - 1) !default;
+$screen-md-max:		($screen-lg-min - 1) !default;
+
+// /Breakpoint helper
+
+// // Small header
+$lg-small-header:	28px;
+$md-small-header:	$lg-small-header;
+$sm-small-header:	$lg-small-header;
+$xs-small-header:	$lg-small-header;
+
+// // Navigation header
+$lg-header:			58px;
+$md-header:			$lg-header;
+$sm-header:			$md-header * (3/4);
+$xs-header:			$sm-header;
+
+// // / Brand image scaling
+$lg-brand-height:	$lg-header - ($border_width * 2);
+$md-brand-height:	$lg-brand-height;
+$sm-brand-height:	$md-brand-height * (2/3);
+$xs-brand-height:	$sm-brand-height;
+
+// // / Menu text size
+$lg-menu-text:		1.3em;
+$md-menu-text:		1.2em;
+$sm-menu-text:		1.1em;
+$xs-menu-text:		$lg-menu-text;
+
+// // / Menu padding
+$lg-menu-padding:	$border_width * 3;
+$md-menu-padding:	$lg-menu-padding * (3/4);
+$sm-menu-padding:	$lg-menu-padding * (1/2);
+$xs-menu-padding:	$lg-menu-padding;
+
+// // Content positioning
+$lg-vspace:			28px;
+$lg-hspace:			28px;
+$md-vspace:			$lg-vspace / 2;
+$md-hspace:			$lg-hspace / 2;
+$sm-vspace:			$lg-vspace / 2;
+$sm-hspace:			$lg-hspace / 2;
+$xs-vspace:			$lg-vspace;
+$xs-hspace:			0;

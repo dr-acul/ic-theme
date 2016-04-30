@@ -7,6 +7,8 @@
  * @subpackage increare
  * @since increare 0.01
  * 
+ * !!! Broken !!! using front-page
+ * 
  */
  
 get_header(); ?>
@@ -23,7 +25,7 @@ get_header(); ?>
 				get_post( get_theme_mod( 'portfolio_selection_2') ),
 		);
 		?>
-		<div class="ic_portfolio_row clearfix">
+		<div class="ic_portfolio_row">
 		<?php
 		global $post;
 		foreach ( $portfolio_posts as $post) : setup_postdata($post); ?>

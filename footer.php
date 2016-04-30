@@ -1,24 +1,20 @@
 <?php
-
 /**
  * increare footer layout
  * 
  * @package WordPress
  * @subpackage increare
  * @since increare 0.0.1
- */
- ?>
+ */?>
  <footer>
- <?php
- 	if (	!  is_active_sidebar( 'left_footer_widgets' )
-			&& is_active_sidebar( 'middle_footer_widgets' )
-			&& is_active_sidebar( 'right_footer_widgets' ) ) {
-		return;
-	} else 	?>
-		<div id="footer" class="clearfix">
-			<?php dynamic_sidebar( 'left_footer_widgets' ); ?>
-			<?php dynamic_sidebar( 'middle_footer_widgets' ); ?>
-			<?php dynamic_sidebar( 'right_footer_widgets' ); ?>
+		<div id="footer">
+		<?php for ($i=0; $i<3; $i++) : ?>
+			<div id="<?php echo WIDGET_IDS[$i]; ?>">
+		<?php if (is_active_sidebar( WIDGET_IDS[$i] )) : ?>
+			<?php dynamic_sidebar( WIDGET_IDS[$i] ); ?>
+		<?php endif; ?>
+			</div><!-- #<?php echo WIDGET_IDS[$i]; ?>-->
+<?php endfor; ?>
 		</div><!-- #footer -->
 </footer>
 	<?php wp_footer(); ?>

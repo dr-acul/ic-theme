@@ -12,12 +12,11 @@
 
 <div id="primary" class="content-area">
 	<main>
-	
 <?php
 	if ( is_front_page() ) {
-		
+		?><div id="ict_slider_wrapper"><?php
 		if ( function_exists( 'start_ic_slider' ) ) { start_ic_slider(); }
-		
+		?></div><!-- #ict_slider_wrapper --><?php
 		$portfolio_posts = array(
 				get_post( get_theme_mod( 'portfolio_selection_0') ),
 				get_post( get_theme_mod( 'portfolio_selection_1') ),
@@ -29,7 +28,7 @@
 			 !empty( $portfolio_posts[1] ) |
 			 !empty( $portfolio_posts[2] ) ) {
 ?>
-		<div class="ic_portfolio_row clearfix">
+		<div class="ic_portfolio_row">
 		<?php
 		global $post;
 		foreach ( $portfolio_posts as $post) : setup_postdata($post); ?>
@@ -38,7 +37,7 @@
 					<h1 class="post-title"><?php the_title(); ?></h1>
 				</header>
 				<?php the_content(); ?>
-			</div><!-- .ic_portfolio_col -->
+			</div>
 		<?php endforeach; ?>
 		</div><!-- .ic_portfolio_row -->
 		<?php

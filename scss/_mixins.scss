@@ -1,0 +1,24 @@
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+// Desktop is the standart layout (pretty much desktop first...)
+@mixin breakpoint($device) {
+	@if $device == notebook {
+		@media screen and (max-width: $screen-md-max) {
+			@content;
+		}
+	} @else if $device == tablet {
+		@media screen and (max-width: $screen-sm-max) {
+			@content;
+		}
+	} @else if $device == mobile {
+		@media screen and (max-width: $screen-xs-max) {
+			@content;
+		}
+	}
+}
