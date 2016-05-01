@@ -11,7 +11,7 @@
 	}
 }
 // / Portfolio column
-div.portfolio-column {
+.portfolio-column {
 	margin: 0;
 	width: (100%/3);
 	height: auto;
@@ -30,9 +30,17 @@ div.portfolio-column {
 		margin-right: -$lg-hspace;
 	}
 }
+.attachment-portfolio_thumbnail { // WordPress class
+	border-radius: $base-line-height * 1.5 ;
+	width: $base-line-height *2.5;
+	height: $base-line-height *2.5;
+	overflow: hidden;
+	margin: ($base-line-height / 2) auto 0 auto;
+	text-align: center;
+}
 
 @include breakpoint(tablet) {
-	div.portfolio-column {
+	.portfolio-column {
 		&:nth-child(1) {
 			margin-left: -$sm-hspace;
 		}
@@ -45,7 +53,7 @@ div.portfolio-column {
 	}
 }
 @include breakpoint(mobile) {
-	div.portfolio-column {
+	.portfolio-column {
 		width: $site-width;
 		margin: 0 0 $xs-vspace 0 !important;
 		clear: both;
@@ -56,15 +64,6 @@ div.portfolio-column {
 }
 
 .ict-portfolio-header {
-	text-align: center;
-}
-
-.attachment-post-thumbnail { // WordPress class
-	border-radius: $base-line-height * 1.5 ;
-	width: $base-line-height *3;
-	height: $base-line-height *3;
-	overflow: hidden;
-	margin: ($base-line-height / 2) auto 0 auto;
 	text-align: center;
 }
 
@@ -80,3 +79,11 @@ div.portfolio-column {
 	padding: floor($base-line-height);
 	text-align:center;
 }
+
+// unused
+// .ict-portfolio-title .fa {
+//	 text-align: right;
+//	 float: right;
+//	 font-size: 1.4em;
+//	 color: green;
+//}

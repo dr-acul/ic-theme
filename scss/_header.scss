@@ -141,6 +141,7 @@
 	padding: 0;	// reset for moblie breakpoint
 	list-style-type: none;
 	background-color: $brand-main-color;
+	@include clearfix;
 	//overwrite jQuery's display state
 	@media screen and (min-width: $screen-sm-min) {
 		display: inline-block !important;
@@ -155,13 +156,15 @@
 	// we could probably write some kind of wp_walker to apply a class...
 	.menu-item {
 		display: inline-block;
+		float: left;
 		height: $lg-header;
 		padding: 0 $lg-menu-padding;
 		font-size: $lg-menu-text;
 		font-weight: 600;
 		color: $brand-third-color;
+		background-color: $brand-main-color;
 		&:hover {
-			background-color: $brand-color-ah; 
+			background-color: $main-menu-hover-effect; 
 		}
 		&:last-child {
 			padding-right: $lg-hspace;
@@ -179,6 +182,7 @@
 			}
 		}
 		@include breakpoint(mobile) {
+			display: block;
 			padding-left: $sm-menu-padding;
 			width: $site-width;
 			font-size: $sm-menu-text;
@@ -196,4 +200,7 @@
 		padding: 0;
 		margin: 0;
 	}
+}
+.current-menu-item { // WordPress class
+	background-color: $main-menu-active-effect;
 }

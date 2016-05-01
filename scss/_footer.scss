@@ -3,12 +3,13 @@
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: flex-start;
+	align-content: flex-start;
+	align-items: flex-start;
 	margin: 0;
 	padding: 0 $lg-hspace;
-	width: 100%;
 	background-color: $brand-main-color;
-	@include get_green_border(top);
 	color: $brand-third-color;
+	@include get_green_border(top);
 	@include clearfix;
 	a {
 		color: $brand-third-color;
@@ -16,6 +17,11 @@
 	a:hover {
 		color: $brand-color-a;
 	}
+	
+	h2 {
+		color: $brand-third-color;
+	}
+	
 	// Menu - TODO: move to standalone widget style
 	ul.menu {
 		padding-left: 1em;
@@ -37,7 +43,7 @@
 #left-footer-widgets,
 #middle-footer-widgets,
 #right-footer-widgets {
-	flex-grow: 1;
+	flex: 1 0 auto;
 	display: flex;
 	flex-flow: column nowrap;
 }

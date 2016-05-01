@@ -1,22 +1,56 @@
-/*
-Copyright (C) 2016 Georg
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin,latin-ext);
 
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
+html {
+	font-family: $base-font;
+	font-size: $base-font-size;
+	line-height: $golden-ratio;
+}
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+a {
+	color: $brand-color-a;
+	text-decoration: none;
+	&:hover {
+		color: $brand-color-ah;
+	}
+	&:visited {
+		color: $brand-color-av;
+	}
+}
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-*/
-/* 
-    Created on : 30.04.2016, 20:46:14
-    Author     : Georg
-*/
+h1, h2, h3, h4, h5, h6 {
+	color: $brand-color-h;
+}
 
+h1 {
+	font-size: 2em;
+}
+
+p {
+	text-align: justify;
+}
+
+.alignleft {
+	margin: 0 $base-line-height 0 0;
+	float: left;
+}
+.alignright {
+	margin: 0 0 0 $base-line-height;
+	float: right;
+}
+.aligncenter {
+	margin: $base-line-height auto;
+}
+
+.wp-caption {
+  background: transparent;
+  @include get_green_border($width: $brand-border-width / 2);
+  max-width: 96%;
+  /* Image does not overflow the content area */
+  padding: $base-line-height / 2;
+  text-align: center;
+}
+
+.wp-caption-text {
+	font-size: 0.8em;
+	font-style: italic;
+}

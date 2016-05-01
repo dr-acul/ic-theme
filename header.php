@@ -82,7 +82,7 @@ if ( get_theme_mod( 'ic_select_icon_hover' ) ) {
 			<?php endif; ?>
 		</div><!-- #ict_brand_wrapper -->
 		<!-- TODO write scritp -->
-		<button id="ict_navbar_button" type="button" class="collapsed" aria-expanded="false" aria-controls="navbar">
+		<button id="ict_navbar_button" type="button" class="collapsed" aria-expanded="false" aria-controls="ict_main_menu">
 			<i class="fa fa-bars" aria-hidden="true"></i>
 <!--
 			<span class="ict_icon_bar"></span>

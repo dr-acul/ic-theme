@@ -1,9 +1,26 @@
-
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin,latin-ext);
+/*
+Theme Name: IN|creare
+Theme URI: http://test.increare.de
+Author: the IN|creare team
+Author URI: http://www.increare.de
+Description: Theme for IN|creare
+Version: 0.01
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: blue, green, white, dark, one-column, two-columns, custom-header, custom-menu, custom-logo, custom-background
+Text Domain: increaretd
+*/
 
 @import "normalize.scss";
-@import "WordPress_core.scss";
+//@import "WordPress_core.scss";
 
 @import "variables.scss";
 @import "mixins.scss";
-@import "ict.scss";
+//@import "_testing.scss";
+@import "typography";
+
+@import "header.scss";
+@import "body.scss";
+@import "footer.scss";
+@import "portfolio.scss";
+@import "gallery.scss";

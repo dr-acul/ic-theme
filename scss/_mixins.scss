@@ -22,3 +22,18 @@
 		}
 	}
 }
+
+// Set the elements border to $position
+@mixin get_green_border($position: "", $width: $brand-border-width) {
+	@if $position == top {
+		border-top: $width $brand-border-style $brand-border-color;
+	} @else if $position == right {
+		border-right: $width $brand-border-style $brand-border-color;
+	} @else if $position == bottom {
+		border-bottom: $width $brand-border-style $brand-border-color;
+	} @else if $position == left {
+		border-left: $width $brand-border-style $brand-border-color;
+	} @else {
+		border: $width $brand-border-style $brand-border-color;
+	}
+}

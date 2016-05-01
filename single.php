@@ -11,7 +11,7 @@
 get_header(); ?>
 
 <div id="primary" class="content-area">
-	<main role="main">
+	<main>
 		<?php while ( have_posts() ) : the_post(); ?>
 		<article>
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

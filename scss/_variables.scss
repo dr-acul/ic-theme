@@ -8,47 +8,36 @@ $brand-third-color:			hsl(0,0%,96%);
 $brand-main-light:			lighten($brand-main-color, 10); // light
 $brand-main-dark:			darken($brand-main-color, 10); // dark
 $brand-color-a:				$brand-main-light;
-$brand-color-ah:			$brand-main-dark;
+$brand-color-ah:			$brand-second-color;
+$brand-color-av:			$brand-main-color;
 $brand-color-p:				$brand-main-color;
-$brand-color-h:				$brand-third-color;
+$brand-color-h:				$brand-main-color;
+
+// / Menu hover effect
+$main-menu-hover-effect:	rgba(255,255,255,0.2);
+$main-menu-active-effect:	rgba(255,255,255,0.2);
+
+// / The border
+$brand-border-width:		5px;
+$brand-border-style:		solid;
+$brand-border-color:		$brand-second-color;
+
+// / Shadow
+$card-shadow:				2px 2px 6px 0 rgba(0, 0, 0, 0.4), 0 2px 10px 0 rgba(0, 0, 0, 0.4);
 
 // / Grey base
 $grey-base:					hsl(0,0%,50%);
 $grey-light:				lighten($grey-base, 30);
 $grey-dark:					darken($grey-base, 30);
 
-// / Background color
-$light-background: 0;
-$dark-background: 0;
-
-$std_white: WhiteSmoke;
-$brand_dark: hsl(255,100,15);
-$brand_light: lighten($brand_dark, 10);
-
 // Typography
-// / Font types
-// / Font sizes
-
-$space_normal: 28px;
-$space_small: $space_normal * 0.6;
-$space_big: $space_normal * 1.8;
-
-$main_menu_item_padding: $space_normal;
+$golden-ratio:				1.618;
+$base-font:					"Open Sans", "Trebuchet MS", sans-serif;
+$base-font-size:			16px;
+$base-line-height:			$golden-ratio * 1em;
 
 $layer: 99999;
-
-$smaller: 0.6;
-$bigger: 1.8;
-
 $site_width: 100%;
-
-$std_text_color: $brand_dark;
-$header_text_color: $std_white;
-
-$border_width: 5px;
-$small_header_height: 28px;
-
-$green_border: $border_width solid lime;
 
 // Brakpoints
 // / Small screen / tablet
@@ -77,21 +66,21 @@ $sm-header:			$md-header * (3/4);
 $xs-header:			$sm-header;
 
 // // / Brand image scaling
-$lg-brand-height:	$lg-header - ($border_width * 2);
+$lg-brand-height:	$lg-header - ($brand-border-width * 2);
 $md-brand-height:	$lg-brand-height;
 $sm-brand-height:	$md-brand-height * (2/3);
 $xs-brand-height:	$sm-brand-height;
 
 // // / Menu text size
 $lg-menu-text:		1.3em;
-$md-menu-text:		1.2em;
-$sm-menu-text:		1.1em;
+$md-menu-text:		1.1em;
+$sm-menu-text:		1em;
 $xs-menu-text:		$lg-menu-text;
 
 // // / Menu padding
-$lg-menu-padding:	$border_width * 3;
-$md-menu-padding:	$lg-menu-padding * (3/4);
-$sm-menu-padding:	$lg-menu-padding * (1/2);
+$lg-menu-padding:	$brand-border-width * 3;
+$md-menu-padding:	$lg-menu-padding * (2/3);
+$sm-menu-padding:	$lg-menu-padding * (2/3);
 $xs-menu-padding:	$lg-menu-padding;
 
 // // Content positioning

@@ -1,54 +1,27 @@
 <?php
-
 /**
  * increare index page layout
  * 
- * @package WordPress
- * @subpackage increare
+ * @package incrare
+ * @subpackage increare theme
  * @since increare 0.01
  * 
- * !!! Broken !!! using front-page
- * 
  */
- 
 get_header(); ?>
-
-<section>
-	
-<?php
-	if ( is_front_page() ) {
-		if ( function_exists( 'meteor_slideshow' ) ) { meteor_slideshow(); }
-		
-		$portfolio_posts = array(
-				get_post( get_theme_mod( 'portfolio_selection_0') ),
-				get_post( get_theme_mod( 'portfolio_selection_1') ),
-				get_post( get_theme_mod( 'portfolio_selection_2') ),
-		);
-		?>
-		<div class="ic_portfolio_row">
-		<?php
-		global $post;
-		foreach ( $portfolio_posts as $post) : setup_postdata($post); ?>
-			<div class="ic_portfolio_col">
-				<h1><?php the_title(); ?></h1>
-				<?php the_content(); ?>
-			</div><!-- .ic_portfolio_col -->
-		<?php endforeach; ?>
-		reset_post_data();
-		</div><!-- .ic_portfolio_row -->
-		<?php
-	} else {
-		while (have_posts() ) : the_post();
-			the_content();
-		endwhile;
-	}
-?>
-</section>
-<?php
-/*
-	wp_link_pages();
-
-	get_sidebar();
-*/
-get_footer();
-?>
+<div id="primary" class="content-area">
+	<main>
+		<header class="page-header">
+			<h1>Aktuelle Posts: </h1>
+		</header>
+		<div class="ict-flex-page">
+		<?php while (have_posts() ) : the_post(); ?>
+			<article>
+				<?php get_template_part( 'content', get_post_format() ); ?>
+			</article>
+		<?php endwhile; ?>
+		</div> <!-- .ict-flex-page -->
+<?php wp_link_pages(); ?>
+<?php // get_sidebar(); ?>
+	</main>
+</div><!-- #primary -->
+<?php get_footer();

@@ -9,11 +9,11 @@
  <footer>
 		<div id="footer">
 		<?php for ($i=0; $i<3; $i++) : ?>
-			<div id="<?php echo WIDGET_IDS[$i]; ?>">
 		<?php if (is_active_sidebar( WIDGET_IDS[$i] )) : ?>
-			<?php dynamic_sidebar( WIDGET_IDS[$i] ); ?>
-		<?php endif; ?>
+			<div id="<?php echo WIDGET_IDS[$i]; ?>">
+				<?php dynamic_sidebar( WIDGET_IDS[$i] ); ?>
 			</div><!-- #<?php echo WIDGET_IDS[$i]; ?>-->
+		<?php endif; ?>
 <?php endfor; ?>
 		</div><!-- #footer -->
 </footer>

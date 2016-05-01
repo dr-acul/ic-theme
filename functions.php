@@ -7,12 +7,15 @@
  * @since increare 0.01
  * 
  */
-const WIDGET_IDS = [ 'left_footer_widgets', 'middle_footer_widgets', 'right_footer_widgets' ];
+const WIDGET_IDS = [ 'left-footer-widgets', 'middle-footer-widgets', 'right-footer-widgets' ];
  
 //add theme supports & post formats
 add_theme_support( 'custom-background' );
 add_theme_support( 'custom-logo' );
-
+add_theme_support( 'post-thumbnails' );
+set_post_thumbnail_size( 93, 155, true);
+add_theme_support( 'html5', array( 'gallery', 'caption' ) );
+//add_theme_support( 'post-formats', array( 'aside', 'gallery' ) );
 /**
  * Enables the Excerpt meta box in Page edit screen.
  * Source: WordPress-Codex
@@ -21,6 +24,12 @@ function wpcodex_add_excerpt_support_for_pages() {
 	add_post_type_support( 'page', 'excerpt' );
 }
 add_action( 'init', 'wpcodex_add_excerpt_support_for_pages' );
+
+function remove_more_link_scroll( $link ) {
+	$link = preg_replace( '|#more-[0-9]+|', '', $link );
+	return $link;
+}
+add_filter( 'the_content_more_link', 'remove_more_link_scroll' );
 
 /*
  * Clean WordPress header
@@ -36,12 +45,12 @@ remove_action('wp_head', 'wlwmanifest_link');
 add_filter('show_admin_bar', '__return_false');
 
 /*
- * Load FontAwesome from CDN
- * 
+ * Load FontAwesome
  */
 function ic_theme_register_styles() {
-	wp_register_style('font-awesome-cdn', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css');
-	wp_enqueue_style('font-awesome-cdn');
+	wp_register_style('font-awesome', get_stylesheet_directory_uri() . '/css/font-awesome.min.css');
+//	wp_register_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css');
+	wp_enqueue_style('font-awesome');
 }
 add_action('wp_print_styles', 'ic_theme_register_styles');
 
@@ -57,7 +66,8 @@ add_action('wp_print_scripts', 'ic_theme_register_js');
  * Register logo image sice
  */
 function ic_theme_register_image_size() {
-    add_image_size( 'custom_logo', '300', '58', array( 'top', 'center' ) );
+    add_image_size( 'custom_logo', '300', '58', true);
+	add_image_size( 'portfolio_thumbnail', '65', '65', true);
 }
 add_action( 'after_setup_theme', 'ic_theme_register_image_size' );
 
