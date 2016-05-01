@@ -1,0 +1,43 @@
+// Footer layout
+#footer {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	margin: 0;
+	padding: 0 $lg-hspace;
+	width: 100%;
+	background-color: $brand-main-color;
+	@include get_green_border(top);
+	color: $brand-third-color;
+	@include clearfix;
+	a {
+		color: $brand-third-color;
+	}
+	a:hover {
+		color: $brand-color-a;
+	}
+	// Menu - TODO: move to standalone widget style
+	ul.menu {
+		padding-left: 1em;
+	}
+	li.menu-item {
+		list-style: none;
+	}
+	li.menu-item a {
+		display: inline;
+		background: none;
+	}
+	@include breakpoint(mobile) {
+		@include clearfix;
+		width: $site-width;
+		flex-flow: column nowrap;
+	}
+}
+
+#left-footer-widgets,
+#middle-footer-widgets,
+#right-footer-widgets {
+	flex-grow: 1;
+	display: flex;
+	flex-flow: column nowrap;
+}

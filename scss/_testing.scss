@@ -1,0 +1,33 @@
+// Testing container
+.testing {
+	z-index: 9999999999;
+	position: fixed;
+	width: 100px * $golden-ratio;
+	height: 100px;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+	background-color: grey;
+	color: black;
+	&:before {
+		content: "Desktop";
+	}
+	@include breakpoint(notebook) {
+		&:before {
+			content: "Notebook";
+		}
+	}
+	@include breakpoint(tablet) {
+		&:before {
+			content: "Tablet";
+		}
+	}
+	@include breakpoint(mobile) {
+		&:before {
+			content: "Moblie";
+		}
+	}
+}

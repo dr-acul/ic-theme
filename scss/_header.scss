@@ -1,0 +1,199 @@
+// Header & Main Menu
+// / Small header
+#ic_s_header {
+  position: fixed;
+  top: 0;
+  width: $site_width;
+  height: $lg-small-header;
+  line-height: $lg-small-header;
+  background-color: $brand-main-color;
+  z-index: $layer;
+  & a {
+	  color: $brand-third-color;
+  }
+  & a:hover {
+	  color:  $brand-second-color;
+  }
+}
+// // Small header contact
+#ic_s_header_contact,
+#ic_small_header_social,
+.ic_small_header_contact_link,
+.ic_small_header_contact_text,
+.ic_small_header_social_link {
+  line-height: inherit;
+  display: inline-block;
+}
+// <span> surrounding the contact links
+#ic_s_header_contact {
+  position: absolute;
+  left: $lg-hspace;
+  @include breakpoint(tablet) {
+	  left: $md-hspace;
+  }
+  @include breakpoint(mobile) {
+	  display: none;
+  }
+}
+/* <span> after the icon surrunding the link text */
+.ic_small_header_contact_text {
+  padding-left: 0.2em;
+  margin-right: 1em;
+}
+// // Small header sozial
+/* Social link icons */
+#ic_small_header_social {
+	position: absolute;
+	right: $lg-hspace;
+	@include breakpoint(tablet) {
+		right: $md-hspace;
+	}
+	@include breakpoint(mobile) {
+		left: 0;
+		right: 0;
+		text-align: center;
+	}
+}
+// // / Social link links
+.ic_small_header_social_link i {
+  line-height: inherit;
+  font-size: 1.4em;
+}
+.ic_small_header_social_link:not(:last-of-type) { //<div><li><a></a></li></div>
+  padding-right: 1em;
+}
+// / Header
+#ict_header,
+#ict_brand_wrapper,
+#ict_main_menu_container,
+#ict_main_menu {
+	height: $lg-header;
+	line-height: $lg-header;
+	@include breakpoint(tablet) {
+		height: $sm-header;
+		line-height: $sm-header;
+	}
+}
+#ict_header {
+	position: fixed;
+	top: $lg-small-header;
+	width: $site_width;
+	background-color: $brand-main-color;
+	/* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */
+	z-index: $layer;
+	@include get_green_border(bottom);
+}
+#ict_brand_wrapper {
+	position: absolute;
+	left: 0;
+}
+#ict_brand_wrapper img {
+	position: absolute;
+    margin: auto;
+    left: $lg-hspace;
+	top: 0;
+    bottom: 0;
+	height: $lg-brand-height;
+	@include breakpoint(tablet) {
+		left: $sm-hspace;
+		height: $sm-brand-height;
+	}
+	@include breakpoint(mobile) {
+		height: $xs-brand-height;
+		//no left overwrite, because we have a lot more space with mobile menu
+	}
+}
+#ict_brand_link {} // TODO: implement non image brand
+// / Main menu
+#ict_navbar_button {
+	display: none;
+	position: absolute;
+	right: 0; // for some reason
+	padding: 0 $xs-header - 28px;
+	height: $xs-header;
+	border: 0;
+	font-size: 28px;
+	color: $brand-third-color;
+	background-color: $brand-main-color;
+	cursor: pointer;
+	&:focus {
+		border: 0;
+		outline: 0;
+	}
+	@include breakpoint(mobile) {
+		display: block;
+	}
+	i:hover {
+		color: $brand-color-ah;
+	}
+}
+#ict_main_menu_container {
+	position: absolute;
+	right: 0;
+	@include breakpoint(mobile) {
+		top: $xs-header;
+		width: $site-width;
+	}
+}
+#ict_main_menu {
+	display: block;
+	margin: 0;
+	padding: 0;	// reset for moblie breakpoint
+	list-style-type: none;
+	background-color: $brand-main-color;
+	//overwrite jQuery's display state
+	@media screen and (min-width: $screen-sm-min) {
+		display: inline-block !important;
+	}
+	@include breakpoint(mobile) {
+		height: auto; //this would cause an overlap when not on mobile view
+		display: none; //don't show menu when switching to mobile view
+		@include get_green_border(bottom);
+	}
+	// use <li> for the link effects here, because we can't address
+	// the last <a> element appropriately
+	// we could probably write some kind of wp_walker to apply a class...
+	.menu-item {
+		display: inline-block;
+		height: $lg-header;
+		padding: 0 $lg-menu-padding;
+		font-size: $lg-menu-text;
+		font-weight: 600;
+		color: $brand-third-color;
+		&:hover {
+			background-color: $brand-color-ah; 
+		}
+		&:last-child {
+			padding-right: $lg-hspace;
+		}
+		@include breakpoint(notebook) {
+			padding: 0 $md-menu-padding;
+			font-size: $md-menu-text;
+		}
+		@include breakpoint(tablet) {
+			padding: 0 $sm-menu-padding;
+			height: $sm-header;
+			font-size: $sm-menu-text;
+			&:last-child {
+				padding-right: $sm-vspace;
+			}
+		}
+		@include breakpoint(mobile) {
+			padding-left: $sm-menu-padding;
+			width: $site-width;
+			font-size: $sm-menu-text;
+			&:first-child {
+				margin-top: $brand-border-width;
+			}
+		}
+	}
+	.menu-item a {
+		display: inherit;
+		color: inherit;
+		height: inherit;
+		width: inherit;
+		font-size: inherit;
+		padding: 0;
+		margin: 0;
+	}
+}

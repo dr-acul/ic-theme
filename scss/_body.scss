@@ -1,0 +1,38 @@
+body {
+	margin-top: $lg-small-header + $lg-header + $lg-vspace; // start body below fixed headers
+}
+
+// Post & Page style
+.post,
+div.page { // div.page to ignore <body.page> class
+  margin: 0 $lg-vspace;
+  margin-bottom: $lg-hspace;
+  height: auto;
+  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.4), 0 2px 10px 0 rgba(0, 0, 0, 0.4);
+  padding: 0 $lg-vspace $lg-hspace $lg-vspace;
+  @include get_green_border(top);
+}
+.post-title,
+.page-title {
+  background-color: $brand-main-color;
+  color: $brand-third-color;
+  padding: 0.3em 1.2em;
+  font-size: 1.6em;
+  margin: 0 (-$lg-vspace);
+}
+
+.post p,
+div.page p { // div.page to ignore <body.page> class
+  color: $brand-main-color;
+}
+
+ // Slider positioning
+ #ict_slider_wrapper {
+	 margin: 0 $lg-hspace;
+	 @include breakpoint(tablet) {
+		 margin: 0 $sm-hspace;
+	 }
+	 @include breakpoint(mobile) {
+		 margin: 0 $xs-hspace;
+	 }
+ }
