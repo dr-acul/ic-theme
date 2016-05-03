@@ -33,9 +33,13 @@
 		foreach ( $portfolio_posts as $post) : setup_postdata($post); ?>
 				<div id="<?php the_ID(); ?>" <?php post_class( 'portfolio-column' ); ?>>
 					<article>
-						<header class="ict-portfolio-header">
+						<header>
+							<div class="ict-portfolio-header">
+								<a class="ict-post-thumnail-link" href="<?php the_permalink(); ?>">
 							<?php the_post_thumbnail( 'portfolio_thumbnail' ); ?>
 							<?php the_title('<h2 class="ict-portfolio-title">','</h2>'); ?>
+								</a>
+							</div>
 						</header>
 						<section class="ict-portfolio-section">
 							<?php the_content(); ?>

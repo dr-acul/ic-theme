@@ -14,9 +14,12 @@
 .portfolio-column {
 	margin: 0;
 	width: (100%/3);
-	height: auto;
 	padding: 0;
+	padding-top: ($base-line-height*2.7)+($base-line-height/2);
 	float: left;
+	p {
+		font-size: 0.9em;
+	}
 	&:hover {
 		background-color: $grey-light;
 	}
@@ -29,6 +32,9 @@
 	&:nth-child(3) {
 		margin-right: -$lg-hspace;
 	}
+}
+.has-post-thumbnail {
+	padding-top: 0;
 }
 .attachment-portfolio_thumbnail { // WordPress class
 	border-radius: $base-line-height * 1.5 ;
@@ -64,20 +70,20 @@
 }
 
 .ict-portfolio-header {
+	margin: auto;
+	width: 70%;
 	text-align: center;
+	@include get_green_border(bottom, 2px);
 }
 
 .ict-portfolio-title {
 	margin: 0;
-	&:first-child {
-		padding-top: $base-line-height / 2;
-	}
 }
 
 .ict-portfolio-section p {
-	margin: auto $base-line-height / 2;
-	padding: floor($base-line-height);
-	text-align:center;
+	margin: $base-line-height / 2;
+	padding: 0;
+	text-align: center;
 }
 
 // unused

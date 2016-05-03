@@ -1,5 +1,24 @@
 body {
-	margin-top: $lg-small-header + $lg-header + $lg-vspace; // start body below fixed headers
+	margin-top: $lg-small-header + $lg-header; // start body below fixed headers
+	background-color: lighten($brand-main-color, 79%);
+}
+
+// Content layout
+#ict-main {
+	display: table;
+}
+
+#ict-content,
+#ict-sidebar {
+	display: table-cell;
+}
+
+#ict-content {
+	min-width: 60%;
+}
+
+#ict-sidebar {
+	width: 40%;
 }
 
 // Post & Page style
@@ -10,13 +29,11 @@ div.page { // div.page to ignore <body.page> class
 	height: auto;
 	box-shadow: $card-shadow;
 	padding: ($lg-hspace/2) $lg-vspace;
-	@include get_green_border(top);
+	//@include get_green_border(top);
 	@include clearfix;
 }
 .post-title,
 .page-title {
-	padding: 0;
-	margin: 0;
 }
 
 .post-categories {
@@ -56,7 +73,7 @@ div.page p { // div.page to ignore <body.page> class
 
  // Slider positioning
  #ict_slider_wrapper {
-	margin: 0 $lg-hspace;
+	margin: auto; // $lg-hspace;
 	@include breakpoint(tablet) {
 		margin: 0 $sm-hspace;
 	}

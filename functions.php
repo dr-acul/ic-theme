@@ -7,8 +7,8 @@
  * @since increare 0.01
  * 
  */
-const WIDGET_IDS = [ 'left-footer-widgets', 'middle-footer-widgets', 'right-footer-widgets' ];
- 
+const SIDEBAR_IDS = [ 'main-widgets', 'footer-widgets' ];
+
 //add theme supports & post formats
 add_theme_support( 'custom-background' );
 add_theme_support( 'custom-logo' );
@@ -66,10 +66,18 @@ add_action('wp_print_scripts', 'ic_theme_register_js');
  * Register logo image sice
  */
 function ic_theme_register_image_size() {
-    add_image_size( 'custom_logo', '300', '58', true);
-	add_image_size( 'portfolio_thumbnail', '65', '65', true);
+    add_image_size( 'custom_logo', '300', '58', true );
+	add_image_size( 'portfolio_thumbnail', '65', '65', true );
+	add_image_size( 'portfolio-background', '1920', '1278', true );
+	add_image_size( 'portfolio-image', '1920', '360', true );
 }
 add_action( 'after_setup_theme', 'ic_theme_register_image_size' );
+function ict_portfolio_image( $sizes ) {
+return array_merge( $sizes, array( 
+	'portfolio-image'	=> __( 'Portfolio image', 'increaretd' ),
+	) );
+}
+add_filter( 'image_size_names_choose', 'ict_portfolio_image');
 
 /*
  * Register menu's
@@ -118,30 +126,23 @@ $ic_social_links = array(
 /*
  * Add footer sidebar feature
  */
-function footer_widget_init() {
+function ict_init_widgets() {
 	register_sidebar( array(
-		'id' 			=> WIDGET_IDS[0],
-		'name' 			=> __( 'Left Footer', 'increaretd'),
-		'description' 	=> __( 'Select widgets for the left footer area.', 'increaretd' ),
-		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'id'			=> SIDEBAR_IDS[0],
+		'name'			=> __( 'Main widgets', 'increaretd' ),
+		'description'	=> __( 'Select widgets for the main widget area', 'increaretd' ),
+		'before_widget'	=> '<div id="%1$s" class="ict-sidebar %2$s">',
 		'after_widget'	=> '</div>',
 	) );
 	register_sidebar( array(
-		'id'			=> WIDGET_IDS[1],
-		'name'			=> __( 'Middle Footer', 'increaretd'),
-		'description'	=> __( 'Select widgets for the middle footer area.', 'increaretd' ),
-		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
-		'after_widget'	=> '</div>',
-	) );
-		register_sidebar( array(
-		'id'			=> WIDGET_IDS[2],
-		'name'			=> __( 'Right Footer', 'increaretd'),
-		'description'	=> __( 'Select widgets for the right footer area.', 'increaretd' ),
-		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'id'			=> SIDEBAR_IDS[1],
+		'name'			=> __( 'Footer widgets', 'increaretd' ),
+		'description'	=> __( 'Select widgets for the footer widget area', 'increaretd' ),
+		'before_widget'	=> '<div id="%1$s" class="%2$s">',
 		'after_widget'	=> '</div>',
 	) );
 }
-add_action( 'widgets_init', 'footer_widget_init');
+add_action( 'widgets_init', 'ict_init_widgets');
 
 //add portfolio feature
 function portfolio_theme_customizer( $wp_customize ) {
@@ -240,3 +241,20 @@ function ic_social_icon_customizer( $wp_customize ) {
 	}
 }
 add_action( 'customize_register', 'ic_social_icon_customizer' );
+
+// register custom post type
+/*
+function ict_create_portfolio_format() {
+    register_post_type( 'portfolio_page_type',
+      array(
+        'labels'		=> array( 'name' => __( 'Portfolio' ) ),
+        'public'		=> true,
+		'hierarchical'	=> true,
+    )
+  );
+}
+
+//add post-formats to post_type 'my_custom_post_type'
+add_action( 'init', 'ict_create_portfolio_format' );
+add_post_type_support( 'portfolio_page_type', 'post-formats' );
+ */
