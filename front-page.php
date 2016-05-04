@@ -30,12 +30,13 @@
 		<div class="ict-portfolio-row">
 		<?php
 		global $post;
+		global $more;
 		foreach ( $portfolio_posts as $post) : setup_postdata($post); ?>
 				<div id="<?php the_ID(); ?>" <?php post_class( 'portfolio-column' ); ?>>
 					<article>
 						<header>
 							<div class="ict-portfolio-header">
-								<a class="ict-post-thumnail-link" href="<?php the_permalink(); ?>">
+								<a class="ict-post-thumnail-link" href="<?php echo '#portfolio-page-' . get_the_ID(); ?>">
 							<?php the_post_thumbnail( 'portfolio_thumbnail' ); ?>
 							<?php the_title('<h2 class="ict-portfolio-title">','</h2>'); ?>
 								</a>
@@ -48,6 +49,23 @@
 				</div>
 		<?php endforeach; ?>
 		</div><!-- .ict-portfolio-row -->
+		<?php foreach( $portfolio_posts as $post ) : setup_postdata($post); ?>
+		<?php $more = 1; //show full post this itme ?>
+		<div id="ict-portfolio-page">
+			<article>
+				<header>
+					<div class="ict-portfolio-page-header">
+						<span id="<?php echo 'portfolio-page-' . get_the_ID(); ?>" class="anchor"></span>
+						<?php the_title('<h1 >', '</h1>'); ?>
+					</div><!-- .ict-portfolio-page-header -->
+					<div class="ict-portfolio-page-content">
+						<?php the_content('', true); ?>
+						</div><!-- .image-grid -->
+					</div><!-- .ict-portfolio-page-content __>
+				</header>
+			</article>
+		</div><!-- #ict-portfolio-page -->
+		<?php endforeach; ?>
 		<?php
 	}	
 }

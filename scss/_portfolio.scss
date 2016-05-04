@@ -2,6 +2,10 @@
 // / Portfolio row
 .ict-portfolio-row {
 	margin: $lg-vspace ($lg-hspace * 2);
+	background-image: url('images/increare_logo.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: lighten($brand-main-color, 78%);
 	@include clearfix;
 	@include breakpoint(tablet) {
 		margin: $sm-vspace ($sm-hspace * 2);
@@ -10,7 +14,7 @@
 		margin: $xs-vspace ($xs-hspace * 2);
 	}
 }
-// / Portfolio column
+// / Portfolio column (horizontal portfolio)
 .portfolio-column {
 	margin: 0;
 	width: (100%/3);
@@ -86,7 +90,69 @@
 	text-align: center;
 }
 
-// unused
+// Portfolio page (vertical portfolio)
+#ict-portfolio-page {
+	margin: auto;
+	margin-bottom: $base-line-height;
+	width: 100%;
+	overflow: hidden;
+	text-align: center;
+	h2 {
+		font-size: 1.6em;
+	}
+	p {
+		font-size: 1.2em;
+		text-align: center;
+	}
+	
+}
+.ict-portfolio-page-header {
+	text-align: center;
+	width: 100%;
+	h1 {
+		height: ($lg-small-header+$lg-header)*1.5;
+		line-height: ($lg-small-header+$lg-header)*1.5;
+		color: $brand-third-color;
+		background-color: $brand-main-color;
+		margin: 0; //reset margins, part of the anchor quickfix
+	}
+}
+//anchor fix
+.anchor {
+	display: block;
+	height: ($lg-small-header+$lg-header); //fix with some actual value, this is just a quickfix
+	margin: -($lg-header+$lg-small-header) 0 0 0;
+	visibility: hidden;
+}
+
+//this is just a short hack, use classes an stuff don't mix that much if not necessary'
+.ict-portfolio-page-content {
+	.gallery {
+		display: table;
+		margin: auto;
+		border: 1px solid lighten($brand-main-color, 70%);
+		figure {
+			display: table-cell;
+			padding: 0;
+			border: $base-line-height solid transparent;
+			background-color: $brand-third-color;
+			border-right:0;
+			&:last-child {
+				border-right: $base-line-height solid $brand-third-color;
+			}
+			& div:last-child { //reset line height, if there is no caption text
+				line-height: 0; //reset line height, check for .wp-caption-text issues
+			}
+			img {
+				max-width: 100%; // scaling responsive, but needs breakpoints
+			}
+			figcaption {
+				line-height: $base-line-height;
+			}
+		}
+	}
+}
+// unused - could be used as portfolio-col-image-placeholder
 // .ict-portfolio-title .fa {
 //	 text-align: right;
 //	 float: right;

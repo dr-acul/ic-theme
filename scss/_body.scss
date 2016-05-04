@@ -1,6 +1,17 @@
+/* use this in case of border issues
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+*/
 body {
 	margin-top: $lg-small-header + $lg-header; // start body below fixed headers
-	background-color: lighten($brand-main-color, 79%);
+	background-color: lighten($brand-main-color, 78%);
 }
 
 // Content layout

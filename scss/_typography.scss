@@ -42,12 +42,11 @@ p {
 }
 
 .wp-caption {
-  background: transparent;
-  @include get_green_border($width: $brand-border-width / 2);
-  max-width: 96%;
-  /* Image does not overflow the content area */
-  padding: $base-line-height / 2;
-  text-align: center;
+	background-color: $brand-third-color;
+	@include get_green_border($width: 1px);
+	max-width: 96%;
+	padding: $base-line-height / 2;
+	text-align: center;
 }
 
 .wp-caption-text {

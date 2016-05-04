@@ -461,10 +461,9 @@ p {
 }
 
 .wp-caption {
-  background: transparent;
-  border: 2.5px solid lime;
+  background-color: whitesmoke;
+  border: 1px solid lime;
   max-width: 96%;
-  /* Image does not overflow the content area */
   padding: 0.809em;
   text-align: center;
 }
@@ -716,9 +715,20 @@ p {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* use this in case of border issues
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+*/
 body {
   margin-top: 86px;
-  background-color: #e8e0ff;
+  background-color: #e4dbff;
 }
 
 #ict-main {
@@ -880,6 +890,10 @@ div.page p {
 
 .ict-portfolio-row {
   margin: 28px 56px;
+  background-image: url("images/increare_logo.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #e4dbff;
 }
 .ict-portfolio-row:after {
   content: "";
@@ -969,6 +983,65 @@ div.page p {
   margin: 0.809em;
   padding: 0;
   text-align: center;
+}
+
+#ict-portfolio-page {
+  margin: auto;
+  margin-bottom: 1.618em;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+#ict-portfolio-page h2 {
+  font-size: 1.6em;
+}
+#ict-portfolio-page p {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.ict-portfolio-page-header {
+  text-align: center;
+  width: 100%;
+}
+.ict-portfolio-page-header h1 {
+  height: 129px;
+  line-height: 129px;
+  color: whitesmoke;
+  background-color: #13004d;
+  margin: 0;
+}
+
+.anchor {
+  display: block;
+  height: 86px;
+  margin: -86px 0 0 0;
+  visibility: hidden;
+}
+
+.ict-portfolio-page-content .gallery {
+  display: table;
+  margin: auto;
+  border: 1px solid #c6b3ff;
+}
+.ict-portfolio-page-content .gallery figure {
+  display: table-cell;
+  padding: 0;
+  border: 1.618em solid transparent;
+  background-color: whitesmoke;
+  border-right: 0;
+}
+.ict-portfolio-page-content .gallery figure:last-child {
+  border-right: 1.618em solid whitesmoke;
+}
+.ict-portfolio-page-content .gallery figure div:last-child {
+  line-height: 0;
+}
+.ict-portfolio-page-content .gallery figure img {
+  max-width: 100%;
+}
+.ict-portfolio-page-content .gallery figure figcaption {
+  line-height: 1.618em;
 }
 
 .gallery {
