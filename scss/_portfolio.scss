@@ -1,76 +1,36 @@
 // Frontpage portfolio
 // / Portfolio row
 .ict-portfolio-row {
-	margin: $lg-vspace ($lg-hspace * 2);
-	background-image: url('images/increare_logo.png');
-	background-repeat: no-repeat;
-	background-position: center center;
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
+	flex-flow: row wrap;
+	margin-top: $base-line-height*2;
+	border-collapse: collapse;
 	background-color: lighten($brand-main-color, 78%);
-	@include clearfix;
-	@include breakpoint(tablet) {
-		margin: $sm-vspace ($sm-hspace * 2);
-	}
-	@include breakpoint(mobile) {
-		margin: $xs-vspace ($xs-hspace * 2);
-	}
 }
 // / Portfolio column (horizontal portfolio)
 .portfolio-column {
-	margin: 0;
-	width: (100%/3);
-	padding: 0;
-	padding-top: ($base-line-height*2.7)+($base-line-height/2);
-	float: left;
+	flex: 1 1 33%;
+	box-sizing: border-box;
+	background-color: $brand-third-color;
+	border-top: 1px solid rgba($brand-main-color, 0.3);
+	border-bottom: 1px solid rgba($brand-main-color, 0.3);
 	p {
 		font-size: 0.9em;
 	}
 	&:hover {
-		background-color: $grey-light;
-	}
-	&:nth-child(1) {
-		margin-left: -$lg-hspace;
-	}
-	&:nth-child(2) {
-		margin: auto $lg-hspace;
-	}
-	&:nth-child(3) {
-		margin-right: -$lg-hspace;
+		background-color: transparent;
 	}
 }
-.has-post-thumbnail {
-	padding-top: 0;
-}
-.attachment-portfolio_thumbnail { // WordPress class
+.attachment-portfolio_thumbnail {
 	border-radius: $base-line-height * 1.5 ;
 	width: $base-line-height *2.5;
 	height: $base-line-height *2.5;
 	overflow: hidden;
 	margin: ($base-line-height / 2) auto 0 auto;
 	text-align: center;
-}
-
-@include breakpoint(tablet) {
-	.portfolio-column {
-		&:nth-child(1) {
-			margin-left: -$sm-hspace;
-		}
-		&:nth-child(2) {
-			margin: auto $sm-hspace;
-		}
-		&:nth-child(3) {
-			margin-right: -$sm-hspace;
-		}
-	}
-}
-@include breakpoint(mobile) {
-	.portfolio-column {
-		width: $site-width;
-		margin: 0 0 $xs-vspace 0 !important;
-		clear: both;
-		&:last-child {
-			margin-bottom: 0 !important;
-		}
-	}
 }
 
 .ict-portfolio-header {
@@ -106,49 +66,51 @@
 	}
 	
 }
-.ict-portfolio-page-header {
-	text-align: center;
-	width: 100%;
-	h1 {
-		height: ($lg-small-header+$lg-header)*1.5;
-		line-height: ($lg-small-header+$lg-header)*1.5;
-		color: $brand-third-color;
-		background-color: $brand-main-color;
-		margin: 0; //reset margins, part of the anchor quickfix
-	}
+.ict-portfolio-page-header h1 {
+		width: 40%;
+		text-align: center;
+		margin: auto;
+//		height: ($lg-small-header+$lg-header)*1.5;
+		line-height: $base-line-height*1.5;
+//		background-color: $brand-main-color;
+		@include get_green_border(bottom, 1px);
 }
 //anchor fix
 .anchor {
-	display: block;
+	display: inline-block;
 	height: ($lg-small-header+$lg-header); //fix with some actual value, this is just a quickfix
 	margin: -($lg-header+$lg-small-header) 0 0 0;
 	visibility: hidden;
 }
 
-//this is just a short hack, use classes an stuff don't mix that much if not necessary'
 .ict-portfolio-page-content {
 	.gallery {
-		display: table;
-		margin: auto;
+		display: flex;
+		justify-content: center;
+		flex-flow: row nowrap;
+		align-items: stretch;
+		width: 100%;
 		border: 1px solid lighten($brand-main-color, 70%);
-		figure {
-			display: table-cell;
-			padding: 0;
-			border: $base-line-height solid transparent;
-			background-color: $brand-third-color;
-			border-right:0;
-			&:last-child {
-				border-right: $base-line-height solid $brand-third-color;
-			}
-			& div:last-child { //reset line height, if there is no caption text
-				line-height: 0; //reset line height, check for .wp-caption-text issues
-			}
-			img {
-				max-width: 100%; // scaling responsive, but needs breakpoints
-			}
-			figcaption {
-				line-height: $base-line-height;
-			}
+		background-color: $brand-third-color;
+		box-shadow: inset 1px 1px 5px lighten($brand-main-color, 70%);
+	}
+	.gallery-item {
+		flex: 0 1 auto;
+		margin: 0;
+		padding: $base-line-height;
+		padding-right: 0;
+		&:last-child {
+			padding-right: $base-line-height;
+		}
+	//reset line height, if there is no caption text,
+	//check for .wp-caption-text issues
+	.gallery-icon:last-child { 
+		line-height: 0;
+	}
+	// scaling responsive
+	// TODO: breakpoints
+	img {
+		width: 100%;
 		}
 	}
 }

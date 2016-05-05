@@ -14,37 +14,46 @@ body {
 	background-color: lighten($brand-main-color, 78%);
 }
 
-// Content layout
+// Main & sidebar layout
 #ict-main {
-	display: table;
+	margin: auto;
+	width: 95%;
+//	background-color: red;
 }
-
+// width: 100% on front page
+body.home #ict-main {
+	width: 100%;
+}
+#ict-content-header {
+	padding-top: $base-line-height/2;
+}
+#ict-content-wrapper {
+	display: table;
+	width: 100%;
+	padding-bottom: $base-line-height;
+}
 #ict-content,
 #ict-sidebar {
 	display: table-cell;
+	padding-right: $base-line-height;
 }
-
 #ict-content {
-	min-width: 60%;
+	min-width: 70%;
+	&:last-child {
+		width: 100%; //feel free to take all the space if there is no sidebar
+	}
 }
-
 #ict-sidebar {
-	width: 40%;
+	width: 30%;
 }
-
 // Post & Page style
 .post,
-div.page { // div.page to ignore <body.page> class
-	margin: 0 $lg-vspace;
-	margin-bottom: $lg-hspace;
+div.page { // div.page to skip body.page class
 	height: auto;
-	box-shadow: $card-shadow;
-	padding: ($lg-hspace/2) $lg-vspace;
-	//@include get_green_border(top);
-	@include clearfix;
-}
-.post-title,
-.page-title {
+	background-color: $brand-third-color;
+	border: 1px solid rgba($brand-main-color, 0.3);
+	padding: $base-line-height/2;
+	margin-bottom: $base-line-height*2;
 }
 
 .post-categories {
@@ -65,17 +74,6 @@ div.page p { // div.page to ignore <body.page> class
 
 .page-header {
 	margin: 0 $lg-vspace;
-}
-
-.ict-flex-page {
-	display: flex;
-	flex-flow: row wrap;
-	align-items: stretch;
-	align-content: stretch;
-	justify-content: center ;
-	article {
-		flex: 1 0 50%;
-	}
 }
 
 .publishdate {

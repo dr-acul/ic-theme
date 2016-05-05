@@ -1,35 +1,35 @@
 <?php
 /**
- * IN|creare single post layout
+ * increare single layout
  * 
- * @package increare
- * @subpackage increare-template
+ * @package incrare
+ * @subpackage increare theme
  * @since increare 0.01
  * 
  */
- 
-get_header(); ?>
-
-<div id="primary" class="content-area">
-	<main>
-		<?php while ( have_posts() ) : the_post(); ?>
-		<article>
-			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<header>
-				<?php the_title( '<h1 class="post-title">', '</h1>'	); ?>
-			</header>
-				<?php the_content(); ?>
-			</div><!-- #post-## -->
-		</article>
-<?php
-endwhile;
 ?>
-	</main><!-- .site-main -->
-</div><!-- .content-area -->
-<?php
-/*
-	wp_link_pages();
-
-	get_sidebar();
-*/
-get_footer();
+<?php get_header(); ?>
+<main>
+	<div id="ict-main">
+		<?php if ( !is_singular() ) :?>
+		<header>
+			<div class="ict-content-header">
+				<h1>Aktuelle Posts</h1>
+			</div>
+		</header>
+		<?php endif; //is_singular() ?>
+		<div id="ict-content-wrapper">
+			<div id="ict-content">
+				<?php while (have_posts() ) : the_post(); ?>
+					<?php get_template_part( 'content', 'post' ); ?>
+				<?php endwhile; ?>
+			</div><!-- #ict-main-content -->
+			<?php if ( is_active_sidebar( SIDEBAR_IDS[0] ) ): ?>
+			<div id="ict-sidebar">
+				<?php get_sidebar(); ?>
+			</div><!-- #ict-sidebar -->
+			<?php endif; // is_active_sidebar ?>
+		</div><!-- #ict-content-wrapper -->
+	</div><!-- #ict-main -->
+</main>
+<?php get_footer();
