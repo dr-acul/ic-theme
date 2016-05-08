@@ -2,15 +2,17 @@
 // Colors
 
 // / Brands color
-// / DOC: $brand-color-[tag|state] - tag: a|p|h1|..., state: hover|focus|...
 $brand-main-color:			hsl(255,100%,15%);
 $brand-second-color:		hsl(120,100%,50%);
 $brand-third-color:			hsl(0,0%,96%);
-$brand-main-light:			lighten($brand-main-color, 10); // light
-$brand-main-dark:			darken($brand-main-color, 10); // dark
+$brand-main-light:			lighten($brand-main-color, 20); // light
+$brand-main-dark:			darken($brand-main-color, 20); // dark
+
+// // Links
+// // DOC: $brand-color-[tag|state] - tag: a|p|h1|..., state: hover|focus|...
 $brand-color-a:				$brand-main-light;
 $brand-color-ah:			$brand-second-color;
-$brand-color-av:			$brand-main-color;
+$brand-color-av:			$brand-main-dark;
 $brand-color-p:				$brand-main-color;
 $brand-color-h:				$brand-main-color;
 

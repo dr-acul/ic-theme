@@ -53,7 +53,6 @@
 // Portfolio page (vertical portfolio)
 #ict-portfolio-page {
 	margin: auto;
-	margin-bottom: $base-line-height;
 	width: 100%;
 	overflow: hidden;
 	text-align: center;
@@ -63,26 +62,21 @@
 	p {
 		font-size: 1.2em;
 		text-align: center;
-	}
 	
 }
+
+// TODO: we should use a template part to show the "horizontal" portfolio
 .ict-portfolio-page-header h1 {
-		width: 40%;
-		text-align: center;
-		margin: auto;
-//		height: ($lg-small-header+$lg-header)*1.5;
-		line-height: $base-line-height*1.5;
-//		background-color: $brand-main-color;
-		@include get_green_border(bottom, 1px);
+		width: 70%;
 }
-//anchor fix
+// // / Fixed header anchor fix
 .anchor {
-	display: inline-block;
-	height: ($lg-small-header+$lg-header); //fix with some actual value, this is just a quickfix
+	display: block;
+	height: ($lg-small-header+$lg-header);
 	margin: -($lg-header+$lg-small-header) 0 0 0;
 	visibility: hidden;
 }
-
+// // / Special gallery version for front-page portfolio
 .ict-portfolio-page-content {
 	.gallery {
 		display: flex;
@@ -102,6 +96,7 @@
 		&:last-child {
 			padding-right: $base-line-height;
 		}
+	}
 	//reset line height, if there is no caption text,
 	//check for .wp-caption-text issues
 	.gallery-icon:last-child { 

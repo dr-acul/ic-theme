@@ -3,7 +3,6 @@
 html {
 	font-family: $base-font;
 	font-size: $base-font-size;
-	line-height: $golden-ratio;
 }
 
 a {
@@ -21,12 +20,19 @@ h1, h2, h3, h4, h5, h6 {
 	color: $brand-color-h;
 }
 
-h1 {
-	font-size: 2em;
-}
-
 p {
 	text-align: justify;
+	line-height: $golden-ratio;
+}
+
+// // / Single title 
+.single-title {
+	line-height: $golden-ratio*$golden-ratio;
+}
+
+// // / Post meta
+.post-meta {
+	text-align: center;
 }
 
 .alignleft {

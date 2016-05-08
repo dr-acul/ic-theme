@@ -44,19 +44,19 @@
 			</div><!-- .ict-portfolio-row -->
 			<?php foreach( $portfolio_posts as $post ) : setup_postdata($post) ?>
 			<?php $more = 1; // show full post this itme, strip teaser ?>
-			<article>
-				<div id="ict-portfolio-page">
+			<div id="ict-portfolio-page">
+				<article>
 					<header>
 						<div class="ict-portfolio-page-header">
 							<span id="<?php echo 'portfolio-page-' . get_the_ID(); ?>" class="anchor"></span>
-							<?php the_title('<h1>', '</h1>'); ?>
+							<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 						</div><!-- .ict-portfolio-page-header -->
 					</header>
 					<div class="ict-portfolio-page-content">
 						<?php the_content('', true, ''); ?>
 					</div><!-- .ict-portfolio-page-content -->
-				</div><!-- #ict-portfolio-page -->
-			</article>
+				</article>
+			</div><!-- #ict-portfolio-page -->
 			<?php endforeach; // vertical portfolio ?>
 			<?php endif; // portfolio_posts[] ?>
 			<?php endif; // is_front_page() ?>

@@ -13,7 +13,7 @@ const SIDEBAR_IDS = [ 'main-widgets', 'footer-widgets' ];
 add_theme_support( 'custom-background' );
 add_theme_support( 'custom-logo' );
 add_theme_support( 'post-thumbnails' );
-set_post_thumbnail_size( 93, 155, true);
+set_post_thumbnail_size( 150, 150, array( 'center', 'center' ) );
 add_theme_support( 'html5', array( 'gallery', 'caption' ) );
 //add_theme_support( 'post-formats', array( 'aside', 'gallery' ) );
 /**

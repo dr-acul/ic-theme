@@ -9,23 +9,28 @@ html {
 	box-sizing: inherit;
 }
 */
+
 body {
 	margin-top: $lg-small-header + $lg-header; // start body below fixed headers
 	background-color: lighten($brand-main-color, 78%);
+	color: $brand-main-color;
+}
+
+//don't collapse margins at the top;
+main {
+	overflow: auto;
 }
 
 // Main & sidebar layout
 #ict-main {
-	margin: auto;
+	margin: $base-line-height*2 auto 0;
 	width: 95%;
-//	background-color: red;
 }
-// width: 100% on front page
+
+// / Front page specific #ict-main
 body.home #ict-main {
+	margin: 0;
 	width: 100%;
-}
-#ict-content-header {
-	padding-top: $base-line-height/2;
 }
 #ict-content-wrapper {
 	display: table;
@@ -36,6 +41,7 @@ body.home #ict-main {
 #ict-sidebar {
 	display: table-cell;
 	padding-right: $base-line-height;
+	vertical-align: top;
 }
 #ict-content {
 	min-width: 70%;
@@ -46,39 +52,47 @@ body.home #ict-main {
 #ict-sidebar {
 	width: 30%;
 }
-// Post & Page style
-.post,
-div.page { // div.page to skip body.page class
-	height: auto;
-	background-color: $brand-third-color;
+#ict-sidebar-wrapper {
+	padding: 0 $base-line-height $base-line-height;
 	border: 1px solid rgba($brand-main-color, 0.3);
-	padding: $base-line-height/2;
-	margin-bottom: $base-line-height*2;
+	background-color: $brand-third-color;
+}
+.ict-content-header {
+	text-align: center;
+}
+.entry-title {
+	margin: auto;
+	width: 100%;
+	text-align: center;
+	line-height: $base-line-height*1.5;
+	@include get_green_border(bottom, 1px);
 }
 
+// Post & Page style
+// div.page to skip body.page class
+.post,
+div.page {
+	padding: 0 $base-line-height $base-line-height;
+	margin-bottom: $base-line-height;
+	background-color: $brand-third-color;
+	border: 1px solid rgba($brand-main-color, 0.3);
+	overflow: hidden;
+}
 .post-categories {
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
 }
-
-.post p,
-div.page p { // div.page to ignore <body.page> class
-  color: $brand-main-color;
-}
-
+.ict-post-thumbnail-link {}
 .attachment-post-thumbnail {
 	@extend .alignleft;
 	margin-top: ($base-line-height/3);
 }
 
-.page-header {
-	margin: 0 $lg-vspace;
+a[rel="author"] b {
+	color: $brand-second-color;
 }
-
-.publishdate {
-	color: $brand-main-color;
-}
+.publishdate {}
 
  // Slider positioning
  #ict_slider_wrapper {

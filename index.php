@@ -7,20 +7,12 @@
  * @since increare 0.01
  * 
  */
-?>
-<?php get_header(); ?>
+get_header(); ?>
 <main>
 	<div id="ict-main">
-		<?php if ( is_singular() ) :?>
-		<header>
-			<div id="ict-content-header">
-				<h1><?php single_post_title() ?></h1>
-			</div>
-		</header>
-		<?php endif; //is_singular() ?>
 		<div id="ict-content-wrapper">
 			<div id="ict-content">
-				<?php while (have_posts() ) : the_post(); ?>
+			<?php while (have_posts() ) : the_post(); ?>
 					<?php get_template_part( 'content', get_post_format() ); ?>
 				<?php endwhile; ?>
 			</div><!-- #ict-content -->

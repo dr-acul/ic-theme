@@ -68,8 +68,8 @@ if ( get_theme_mod( 'ic_select_icon_hover' ) ) {
 <nav>
 	<div id="ict_header">
 		<div id="ict_brand_wrapper">
-			<?php if ( get_theme_mod( 'custom_logo' ) ) : ?><!-- image -->
-			<a id="ict_brand_link" href="<?php bloginfo( 'url' ); ?>">
+			<?php if ( get_theme_mod( 'custom_logo' ) ) : ?>
+			<a id="ict_brand_link" href="<?php echo home_url( '/' ); ?>">
 				<?php $post_id = get_theme_mod( 'custom_logo' ); ?>
 				<img src="<?php echo wp_get_attachment_url( $post_id ); ?>"
 					 alt="<?php echo get_the_title( $post_id ); ?>" />
