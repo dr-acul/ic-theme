@@ -73,8 +73,8 @@ function ic_theme_register_image_size() {
 }
 add_action( 'after_setup_theme', 'ic_theme_register_image_size' );
 function ict_portfolio_image( $sizes ) {
-return array_merge( $sizes, array( 
-	'portfolio-image'	=> __( 'Portfolio image', 'increaretd' ),
+	return array_merge( $sizes, array( 
+		'portfolio-image'	=> __( 'Portfolio image', 'increaretd' ),
 	) );
 }
 add_filter( 'image_size_names_choose', 'ict_portfolio_image');
@@ -82,8 +82,8 @@ add_filter( 'image_size_names_choose', 'ict_portfolio_image');
 /*
  * Register menu's
  */
-register_nav_menu( 'ict_main_menu', __( 'Header Menu (main)', 'increaetd' ) );
-register_nav_menu( 'ict_footer_menu', __( 'Footer Menu', 'increaretd' ) );
+register_nav_menu( 'ict-main-menu', __( 'Header Menu (main)', 'increaetd' ) );
+register_nav_menu( 'ict-footer-menu', __( 'Footer Menu', 'increaretd' ) );
 
 /* 
  * Initialize social links and icons
