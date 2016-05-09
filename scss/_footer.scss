@@ -1,7 +1,7 @@
 // Footer layout
-#footer {
+#footer-widgets {
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	justify-content: flex-start;
 	align-content: flex-start;
 	align-items: flex-start;
@@ -21,7 +21,9 @@
 	h2 {
 		color: $brand-third-color;
 	}
-	
+	div {
+		flex: 1 1 33%;
+	}
 	// Menu - TODO: move to standalone widget style
 	ul.menu {
 		padding-left: 1em;
@@ -43,7 +45,5 @@
 #left-footer-widgets,
 #middle-footer-widgets,
 #right-footer-widgets {
-	flex: 1 0 auto;
-	display: flex;
-	flex-flow: column nowrap;
+	
 }

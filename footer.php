@@ -7,15 +7,13 @@
  * @since increare 0.0.1
  */?>
  <footer>
-		<div id="footer">
-		<?php for ($i=0; $i<3; $i++) : ?>
-		<?php if (is_active_sidebar( WIDGET_IDS[$i] )) : ?>
-			<div id="<?php echo WIDGET_IDS[$i]; ?>">
-				<?php dynamic_sidebar( WIDGET_IDS[$i] ); ?>
-			</div><!-- #<?php echo WIDGET_IDS[$i]; ?>-->
-		<?php endif; ?>
-<?php endfor; ?>
-		</div><!-- #footer -->
+	 <div id="footer">
+	<?php if (is_active_sidebar( SIDEBAR_IDS[1] ) ) : ?>
+	 <div id="<?php echo SIDEBAR_IDS[1]; ?>">
+		 <?php dynamic_sidebar( SIDEBAR_IDS[1] ); ?>
+	</div><!-- #<?php echo SIDEBAR_IDS[1]; ?>-->
+	<?php endif; ?>
+	</div><!-- #footer -->
 </footer>
 	<?php wp_footer(); ?>
 </body>
