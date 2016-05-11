@@ -43,8 +43,9 @@ p {
 	margin: 0 0 0 $base-line-height;
 	float: right;
 }
-.aligncenter {
-	margin: $base-line-height auto;
+.aligncenter,
+.alignnone {
+	margin: 0 auto $base-line-height;
 }
 
 .wp-caption {

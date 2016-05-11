@@ -72,6 +72,9 @@ function ic_theme_register_image_size() {
 	add_image_size( 'portfolio-image', '1920', '360', true );
 }
 add_action( 'after_setup_theme', 'ic_theme_register_image_size' );
+/*
+ * Make the Portfolio image size selectable in backend
+ */
 function ict_portfolio_image( $sizes ) {
 	return array_merge( $sizes, array( 
 		'portfolio-image'	=> __( 'Portfolio image', 'increaretd' ),
@@ -82,7 +85,7 @@ add_filter( 'image_size_names_choose', 'ict_portfolio_image');
 /*
  * Register menu's
  */
-register_nav_menu( 'ict-main-menu', __( 'Header Menu (main)', 'increaetd' ) );
+register_nav_menu( 'ict-main-menu', __( 'Header Menu (main)', 'increaretd' ) );
 register_nav_menu( 'ict-footer-menu', __( 'Footer Menu', 'increaretd' ) );
 
 /* 
@@ -148,20 +151,20 @@ add_action( 'widgets_init', 'ict_init_widgets');
 function portfolio_theme_customizer( $wp_customize ) {
 	
 	function get_post_choices_array() {
-		$post_choices = get_posts();
-		$post_choice_options = array(
+		$choices = array_merge( get_posts(), get_pages() );
+		$options = array(
 				'select_option' => '&mdash; Select &mdash;',
 		);
-		foreach ( $post_choices as $post_choice) {
-			$post_choice_options[ $post_choice->ID ] = $post_choice->post_title;
+		foreach ( $choices as $choice) {
+			$options[ $choice->ID ] = $choice->post_title;
 		}
-		return $post_choice_options;
+		return $options;
 	}
 
 	$wp_customize->add_section( 'portfolio_post_section', array(
 			'title'	=> 'Portfolio',
 			'priority' => 30,
-			'description' => 'Select three posts to dispalay them in the portfolio boxes.',
+			'description' => 'Select posts to display them as portfolio.',
 	) );
 	
 	$wp_customize->add_setting( 'portfolio_selection_0', array ( 
@@ -222,7 +225,7 @@ function ic_social_icon_customizer( $wp_customize ) {
 		'transport'				=> 'refresh',
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'ic_select_icon_hover', array(
-		'label'		=>	__( 'Select header :hover color', 'increaretd' ),
+		'label'		=>	__( 'Select social icon hover color', 'increaretd' ),
 		'section'	=>	'ic_social_icon_customizer',
 		'settings'	=>	'ic_select_icon_hover',
 	) ) );

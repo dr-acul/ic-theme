@@ -12,7 +12,7 @@ html {
 
 body {
 	margin-top: $lg-small-header + $lg-header; // start body below fixed headers
-	background-color: lighten($brand-main-color, 78%);
+	background-color: $brand-main-light;
 	color: $brand-main-color;
 }
 
@@ -40,17 +40,28 @@ body.home #ict-main {
 #ict-content,
 #ict-sidebar {
 	display: table-cell;
-	padding-right: $base-line-height;
 	vertical-align: top;
+	@include breakpoint(tablet) {
+		display: block;
+	}
 }
 #ict-content {
 	min-width: 70%;
+	padding-right: $base-line-height;
 	&:last-child {
 		width: 100%; //feel free to take all the space if there is no sidebar
+		padding-right: 0;
+	}
+	@include breakpoint(tablet) {
+		width: 100%;
+		padding-right: 0;
 	}
 }
 #ict-sidebar {
 	width: 30%;
+	@include breakpoint(tablet) {
+		width: 100%;
+	}
 }
 #ict-sidebar-wrapper {
 	padding: 0 $base-line-height $base-line-height;

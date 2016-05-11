@@ -11,8 +11,9 @@
 	background-color: lighten($brand-main-color, 78%);
 }
 // / Portfolio column (horizontal portfolio)
-.portfolio-column {
-	flex: 1 1 33%;
+.ict-portfolio-column {
+	flex: 1 1 (100%/33);
+	min-width: $portfolio-min-width;
 	box-sizing: border-box;
 	background-color: $brand-third-color;
 	border-top: 1px solid rgba($brand-main-color, 0.3);
@@ -39,9 +40,9 @@
 	text-align: center;
 	@include get_green_border(bottom, 2px);
 }
-
-.ict-portfolio-title {
-	margin: 0;
+// Reset margin only when there is a portfolio thumbnail (would be first-child)
+.ict-portfolio-title:not(:first-child) {
+	margin: ($base-line-height/3) 0;
 }
 
 .ict-portfolio-section p {
@@ -76,7 +77,7 @@
 	margin: -($lg-header+$lg-small-header) 0 0 0;
 	visibility: hidden;
 }
-// // / Special gallery version for front-page portfolio
+// // / Special gallery for horizontal front-page portfolio
 .ict-portfolio-page-content {
 	.gallery {
 		display: flex;

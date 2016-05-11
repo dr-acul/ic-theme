@@ -26,12 +26,14 @@
 			<div class="ict-portfolio-row">
 			<?php global $post, $more; ?>
 			<?php foreach ($portfolio_posts as $post) : setup_postdata($post) ?>
-				<div class="portfolio-column" >
+				<div class="ict-portfolio-column" >
 					<article>
 						<header>
 							<div class="ict-portfolio-header">
-								<a class="ict-post-thumnail-link" href="<?php echo '#portfolio-page-' . get_the_ID(); ?>"><?php the_post_thumbnail( 'portfolio_thumbnail' ); ?></a>
-								<a class="ict-portfolio-page-link" href="<?php echo '#portfolio-page-' .get_the_ID(); ?>"><?php the_title('<h2 class="ict-portfolio-title">','</h2>'); ?></a>
+								<a class="ict-portfolio-page-link" href="<?php echo '#' . get_the_title(); ?>">
+									<?php the_post_thumbnail( 'portfolio_thumbnail' ); ?>
+									<?php the_title('<h2 class="ict-portfolio-title">','</h2>'); ?>
+								</a><!-- ict-postfolio-page-link -->
 							</div><!-- .ict-portfolio-header -->
 						</header>
 						<?php // TODO: no need for this element, use a template part? ?>
@@ -39,7 +41,7 @@
 							<?php the_content(); ?>
 						</section><!-- .ict-portfolio-section -->
 					</article>
-				</div> <!-- .portfolio-column -->
+				</div> <!-- .ict-portfolio-column -->
 			<?php endforeach; // horizontal portfolio ?>
 			</div><!-- .ict-portfolio-row -->
 			<?php foreach( $portfolio_posts as $post ) : setup_postdata($post) ?>
@@ -48,7 +50,7 @@
 				<article>
 					<header>
 						<div class="ict-portfolio-page-header">
-							<span id="<?php echo 'portfolio-page-' . get_the_ID(); ?>" class="anchor"></span>
+							<span id="<?php echo get_the_title(); ?>" class="anchor"></span>
 							<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 						</div><!-- .ict-portfolio-page-header -->
 					</header>
