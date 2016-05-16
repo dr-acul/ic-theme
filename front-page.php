@@ -9,51 +9,60 @@
  */
  ?>
  <?php get_header(); ?>
-<div id="primary" class="content-area">
-	<main>
-<?php
-	if ( is_front_page() ) {
-		?><div id="ict_slider_wrapper"><?php
-		if ( function_exists( 'start_ic_slider' ) ) { start_ic_slider(); }
-		?></div><!-- #ict_slider_wrapper --><?php
-		$portfolio_posts = array(
+<main>
+	<div id="ict-main">
+		<div id="ict-main-content">
+			<?php if ( is_front_page() ) : ?>
+			<div id="ict_slider_wrapper">
+				<?php if ( function_exists( 'start_ic_slider' ) ) { start_ic_slider(); } ?>
+			</div><!-- #ict_slider_wrapper -->
+			<?php 
+			$portfolio_posts = array(
 				get_post( get_theme_mod( 'portfolio_selection_0') ),
 				get_post( get_theme_mod( 'portfolio_selection_1') ),
 				get_post( get_theme_mod( 'portfolio_selection_2') ),
-		);
-/* TODO: implement multi-row portfolio -> 0.04 */ 
-
-		if ( !empty( $portfolio_posts[0] ) | 
-			 !empty( $portfolio_posts[1] ) |
-			 !empty( $portfolio_posts[2] ) ) {
-?>
-		<div class="ict-portfolio-row">
-		<?php
-		global $post;
-		foreach ( $portfolio_posts as $post) : setup_postdata($post); ?>
-				<div id="<?php the_ID(); ?>" <?php post_class( 'portfolio-column' ); ?>>
+			); ?>
+			<?php if ( !empty($portfolio_posts[0]) && !empty($portfolio_posts[1]) && !empty($portfolio_posts[2]) ) : ?>
+			<div class="ict-portfolio-row">
+			<?php global $post, $more; ?>
+			<?php foreach ($portfolio_posts as $post) : setup_postdata($post) ?>
+				<div class="ict-portfolio-column" >
 					<article>
-						<header class="ict-portfolio-header">
-							<?php the_post_thumbnail( 'portfolio_thumbnail' ); ?>
-							<?php the_title('<h2 class="ict-portfolio-title">','</h2>'); ?>
+						<header>
+							<div class="ict-portfolio-header">
+								<a class="ict-portfolio-page-link" href="<?php echo '#' . get_the_title(); ?>">
+									<?php the_post_thumbnail( 'portfolio_thumbnail' ); ?>
+									<?php the_title('<h2 class="ict-portfolio-title">','</h2>'); ?>
+								</a><!-- ict-postfolio-page-link -->
+							</div><!-- .ict-portfolio-header -->
 						</header>
+						<?php // TODO: no need for this element, use a template part? ?>
 						<section class="ict-portfolio-section">
 							<?php the_content(); ?>
-						</section>
+						</section><!-- .ict-portfolio-section -->
 					</article>
-				</div>
-		<?php endforeach; ?>
-		</div><!-- .ict-portfolio-row -->
-		<?php
-	}	
-}
-?>
-	</main>
-</div><!-- .content-area -->
-<?php
-/*
-	wp_link_pages();
-
-	get_sidebar();
-*/
-get_footer();
+				</div> <!-- .ict-portfolio-column -->
+			<?php endforeach; // horizontal portfolio ?>
+			</div><!-- .ict-portfolio-row -->
+			<?php foreach( $portfolio_posts as $post ) : setup_postdata($post) ?>
+			<?php $more = 1; // show full post this time, strip teaser ?>
+			<div class="ict-portfolio-page">
+				<article>
+					<header>
+						<div class="ict-portfolio-page-header">
+							<span id="<?php echo get_the_title(); ?>" class="anchor"></span>
+							<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+						</div><!-- .ict-portfolio-page-header -->
+					</header>
+					<div class="ict-portfolio-page-content">
+						<?php the_content('', true, ''); ?>
+					</div><!-- .ict-portfolio-page-content -->
+				</article>
+			</div><!-- .ict-portfolio-page -->
+			<?php endforeach; // vertical portfolio ?>
+			<?php endif; // portfolio_posts[] ?>
+			<?php endif; // is_front_page() ?>
+		</div><!-- ict-main-content -->
+	</div><!-- #ict-main -->
+</main>
+<?php get_footer();

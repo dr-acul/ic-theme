@@ -8,20 +8,20 @@
  * 
  */
 get_header(); ?>
-<div id="primary" class="content-area">
-	<main>
-		<header class="page-header">
-			<h1>Aktuelle Posts: </h1>
-		</header>
-		<div class="ict-flex-page">
-		<?php while (have_posts() ) : the_post(); ?>
-			<article>
-				<?php get_template_part( 'content', get_post_format() ); ?>
-			</article>
-		<?php endwhile; ?>
-		</div> <!-- .ict-flex-page -->
-<?php wp_link_pages(); ?>
-<?php // get_sidebar(); ?>
-	</main>
-</div><!-- #primary -->
+<main>
+	<div id="ict-main">
+		<div id="ict-content-wrapper">
+			<div id="ict-content">
+			<?php while (have_posts() ) : the_post(); ?>
+					<?php get_template_part( 'content', get_post_format() ); ?>
+				<?php endwhile; ?>
+			</div><!-- #ict-content -->
+			<?php if ( is_active_sidebar( SIDEBAR_IDS[0] ) ): ?>
+			<div id="ict-sidebar">
+				<?php get_sidebar(); ?>
+			</div><!-- #ict-sidebar -->
+			<?php endif; ?>
+		</div><!-- #ict-content-wrapper -->
+	</div><!-- #ict-main -->
+</main>
 <?php get_footer();
