@@ -1,4 +1,3 @@
-/* use this in case of border issues
 html {
 	box-sizing: border-box;
 }
@@ -8,7 +7,6 @@ html {
 *:after {
 	box-sizing: inherit;
 }
-*/
 
 body {
 	margin-top: $lg-small-header + $lg-header; // start body below fixed headers
@@ -16,21 +14,18 @@ body {
 	color: $brand-main-color;
 }
 
-//don't collapse margins at the top;
-main {
-	overflow: auto;
-}
+//don't collapse top margins;
+main { overflow: auto; }
 
 // Main & sidebar layout
 #ict-main {
-	margin: $base-line-height*2 auto 0;
-	width: 95%;
+	margin: $base-line-height*2 auto 0 auto;
+	width: $content-width;
 }
 
 // / Front page specific #ict-main
 body.home #ict-main {
-	margin: 0;
-	width: 100%;
+	margin: 0 auto;
 }
 #ict-content-wrapper {
 	display: table;

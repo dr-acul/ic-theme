@@ -423,7 +423,7 @@ html {
 }
 
 a {
-  color: #e2e3e9;
+  color: steelblue;
   text-decoration: none;
 }
 a:hover {
@@ -484,6 +484,8 @@ p {
   width: 100%;
   height: 28px;
   line-height: 28px;
+  font-size: 0.9em;
+  text-align: center;
   background-color: #13004d;
   z-index: 99999;
 }
@@ -497,10 +499,10 @@ p {
 #ict-small-header-contact,
 #ict-small-header-social,
 .ict-small-header-contact-link,
-.ict-small-header-contact-text,
-.ict-small-header-social-link {
-  line-height: inherit;
+.ict-small-header-contact-text {
   display: inline-block;
+  height: inherit;
+  line-height: inherit;
 }
 
 #ict-small-header-contact {
@@ -518,16 +520,17 @@ p {
   }
 }
 
-/* <span> after the icon surrunding the link text */
+/* <span> after the icon surrounding the link text */
 .ict-small-header-contact-text {
   padding-left: 0.2em;
   margin-right: 1em;
 }
 
-/* Social link icons */
 #ict-small-header-social {
   position: absolute;
   right: 28px;
+  background-color: whitesmoke;
+  border-radius: 3px;
 }
 @media screen and (max-width: 991px) {
   #ict-small-header-social {
@@ -536,19 +539,17 @@ p {
 }
 @media screen and (max-width: 767px) {
   #ict-small-header-social {
-    left: 0;
-    right: 0;
-    text-align: center;
+    position: initial;
   }
 }
-
-.ict-small-header-social-link i {
-  line-height: inherit;
-  font-size: 1.4em;
+#ict-small-header-social .sfmsb_widget,
+#ict-small-header-social .sfmsb-square {
+  height: 28px !important;
+  line-height: 28px !important;
 }
-
-.ict-small-header-social-link:not(:last-of-type) {
-  padding-right: 1em;
+#ict-small-header-social .sfmsb-follow-social-buttons a,
+#ict-small-header-social .sfmsb-follow-social-buttons .sfmsb-text {
+  margin: 0 !important;
 }
 
 #ict-header,
@@ -572,6 +573,7 @@ p {
   position: fixed;
   top: 28px;
   width: 100%;
+  box-sizing: initial;
   background-color: #13004d;
   z-index: 99999;
   border-bottom: 5px solid lime;
@@ -666,7 +668,7 @@ p {
   float: left;
   height: 58px;
   padding: 0 15px;
-  font-size: 1.3em;
+  font-size: 1em;
   font-weight: 600;
   color: whitesmoke;
   background-color: #13004d;
@@ -680,7 +682,7 @@ p {
 @media screen and (max-width: 1199px) {
   #ict-main-menu .menu-item {
     padding: 0 10px;
-    font-size: 1.1em;
+    font-size: 1em;
   }
 }
 @media screen and (max-width: 991px) {
@@ -714,20 +716,19 @@ p {
   margin: 0;
 }
 #ict-main-menu .current-menu-item {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* use this in case of border issues
 html {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-	box-sizing: inherit;
+  box-sizing: inherit;
 }
-*/
+
 body {
   margin-top: 86px;
   background-color: #e2e3e9;
@@ -739,13 +740,12 @@ main {
 }
 
 #ict-main {
-  margin: 3.236em auto 0;
+  margin: 3.236em auto 0 auto;
   width: 95%;
 }
 
 body.home #ict-main {
-  margin: 0;
-  width: 100%;
+  margin: 0 auto;
 }
 
 #ict-content-wrapper {
@@ -876,7 +876,7 @@ a[rel="author"] b {
   color: whitesmoke;
 }
 #footer-widgets a:hover {
-  color: #e2e3e9;
+  color: steelblue;
 }
 #footer-widgets h2 {
   color: whitesmoke;
@@ -928,6 +928,7 @@ a[rel="author"] b {
           flex-flow: row wrap;
   margin-top: 3.236em;
   border-collapse: collapse;
+  border: 1px solid rgba(19, 0, 77, 0.3);
   background-color: #e4dbff;
 }
 
@@ -936,22 +937,12 @@ a[rel="author"] b {
       -ms-flex: 1 1 3.0303%;
           flex: 1 1 3.0303%;
   min-width: 350px;
-  box-sizing: border-box;
   background-color: whitesmoke;
-  border-top: 1px solid rgba(19, 0, 77, 0.3);
-  border-bottom: 1px solid rgba(19, 0, 77, 0.3);
-}
-.ict-portfolio-column p {
-  font-size: 0.9em;
-}
-.ict-portfolio-column:hover {
-  background-color: transparent;
+  padding: 0 1.618em;
 }
 
 .attachment-portfolio_thumbnail {
   border-radius: 2.427em;
-  width: 4.045em;
-  height: 4.045em;
   overflow: hidden;
   margin: 0.809em auto 0 auto;
   text-align: center;
@@ -968,35 +959,43 @@ a[rel="author"] b {
   margin: 0.53933em 0;
 }
 
+.ict-portfolio-title:first-child {
+  margin: 4.045em 0 0.53933em;
+}
+
 .ict-portfolio-section p {
   margin: 0.809em;
   padding: 0;
   text-align: center;
 }
 
-#ict-portfolio-page {
+.ict-portfolio-page {
   margin: auto;
   width: 100%;
   overflow: hidden;
   text-align: center;
 }
-#ict-portfolio-page h2 {
+.ict-portfolio-page h2 {
   font-size: 1.6em;
 }
-#ict-portfolio-page p {
+.ict-portfolio-page p {
   font-size: 1.2em;
   text-align: center;
 }
-#ict-portfolio-page .ict-portfolio-page-header h1 {
+
+.ict-portfolio-page-header h1 {
   width: 70%;
 }
-#ict-portfolio-page .anchor {
+
+.anchor {
   display: block;
   height: 86px;
   margin: -86px 0 0 0;
   visibility: hidden;
 }
-#ict-portfolio-page .ict-portfolio-page-content .gallery {
+
+.ict-portfolio-page-content .gallery {
+  position: relative;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -1013,8 +1012,27 @@ a[rel="author"] b {
   border: 1px solid #c6b3ff;
   background-color: whitesmoke;
   box-shadow: inset 1px 1px 5px #c6b3ff;
+  z-index: -1;
+  overflow: hidden;
 }
-#ict-portfolio-page .ict-portfolio-page-content .gallery-item {
+@media screen and (max-width: 767px) {
+  .ict-portfolio-page-content .gallery {
+    -webkit-flex-flow: column nowrap;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+  }
+}
+.ict-portfolio-page-content .gallery:after {
+  content: "";
+  position: absolute;
+  top: -7px;
+  right: 0;
+  bottom: 0;
+  left: -7px;
+  box-shadow: inset 2px 2px 5px 2px #c6b3ff;
+  z-index: 1;
+}
+.ict-portfolio-page-content .gallery-item {
   -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
@@ -1022,14 +1040,24 @@ a[rel="author"] b {
   padding: 1.618em;
   padding-right: 0;
 }
-#ict-portfolio-page .ict-portfolio-page-content .gallery-item:last-child {
+@media screen and (max-width: 767px) {
+  .ict-portfolio-page-content .gallery-item {
+    padding: 1.618em;
+  }
+}
+.ict-portfolio-page-content .gallery-item:last-child {
   padding-right: 1.618em;
 }
-#ict-portfolio-page .ict-portfolio-page-content .gallery-icon:last-child {
+.ict-portfolio-page-content .gallery-icon:last-child {
   line-height: 0;
 }
-#ict-portfolio-page .ict-portfolio-page-content img {
+.ict-portfolio-page-content .gallery-icon img {
   width: 100%;
+}
+@media screen and (max-width: 767px) {
+  .ict-portfolio-page-content .gallery-icon img {
+    width: 80%;
+  }
 }
 
 .gallery {

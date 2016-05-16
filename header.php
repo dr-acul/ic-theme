@@ -35,30 +35,9 @@
 			</span><!-- #ict-small-header-contact -->
 
 			<span id="ict-small-header-social">
-			<?php
-			/* omitted check for social links, they will not be printed if they
-			 * are empty should be enabled when ic_select_iconset is registered
-			 * TODO: fix init-color-first bug
-			 */
-			if ( get_theme_mod( 'ic_select_icon_hover' ) ) :
-				global $ic_social_links;
-				$link_class = 'ict-small-header-social-link';
-				foreach ( array_keys($ic_social_links) as $key ) :
-					if ( get_theme_mod( $key ) ) : ?>
-						<a class="<?php echo $link_class ?>" href="<?php echo get_theme_mod( $key ) ?>">
-						<?php echo $ic_social_links[$key]; ?>
-						</a>
-					<?php endif; ?>
-				<?php endforeach; ?>
-				<?php /* TODO: rewrite to css */ ?>
-				<script type="text/javascript">
-					jQuery( ".<?php echo $link_class ?>" ).hover(function() {
-						jQuery( this ).css( "color", "<?php echo get_theme_mod( 'ic_select_icon_hover' ); ?>" );
-					}, function() {
-						jQuery( this ).css( "color", "WhiteSmoke");
-					} );
-				</script>
-			<?php endif; ?>
+				<?php if (is_active_sidebar( SIDEBAR_IDS[2] ) ) : ?>
+					<?php dynamic_sidebar( SIDEBAR_IDS[2] ); ?>
+				<?php endif; ?>
 			</span><!-- #ict-small-header-social -->
 		</div><!-- #ict-small-header -->
 	</header>

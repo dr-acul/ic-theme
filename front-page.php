@@ -22,7 +22,7 @@
 				get_post( get_theme_mod( 'portfolio_selection_1') ),
 				get_post( get_theme_mod( 'portfolio_selection_2') ),
 			); ?>
-			<?php if ( !empty( $portfolio_posts[0] ) | !empty( $portfolio_posts[1] ) | !empty( $portfolio_posts[2] ) ) : ?>
+			<?php if ( !empty($portfolio_posts[0]) && !empty($portfolio_posts[1]) && !empty($portfolio_posts[2]) ) : ?>
 			<div class="ict-portfolio-row">
 			<?php global $post, $more; ?>
 			<?php foreach ($portfolio_posts as $post) : setup_postdata($post) ?>
@@ -45,8 +45,8 @@
 			<?php endforeach; // horizontal portfolio ?>
 			</div><!-- .ict-portfolio-row -->
 			<?php foreach( $portfolio_posts as $post ) : setup_postdata($post) ?>
-			<?php $more = 1; // show full post this itme, strip teaser ?>
-			<div id="ict-portfolio-page">
+			<?php $more = 1; // show full post this time, strip teaser ?>
+			<div class="ict-portfolio-page">
 				<article>
 					<header>
 						<div class="ict-portfolio-page-header">
@@ -58,7 +58,7 @@
 						<?php the_content('', true, ''); ?>
 					</div><!-- .ict-portfolio-page-content -->
 				</article>
-			</div><!-- #ict-portfolio-page -->
+			</div><!-- .ict-portfolio-page -->
 			<?php endforeach; // vertical portfolio ?>
 			<?php endif; // portfolio_posts[] ?>
 			<?php endif; // is_front_page() ?>

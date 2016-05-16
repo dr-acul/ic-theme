@@ -8,41 +8,35 @@
 	flex-flow: row wrap;
 	margin-top: $base-line-height*2;
 	border-collapse: collapse;
+	border: 1px solid rgba($brand-main-color, 0.3);
 	background-color: lighten($brand-main-color, 78%);
 }
 // / Portfolio column (horizontal portfolio)
 .ict-portfolio-column {
 	flex: 1 1 (100%/33);
 	min-width: $portfolio-min-width;
-	box-sizing: border-box;
 	background-color: $brand-third-color;
-	border-top: 1px solid rgba($brand-main-color, 0.3);
-	border-bottom: 1px solid rgba($brand-main-color, 0.3);
-	p {
-		font-size: 0.9em;
-	}
-	&:hover {
-		background-color: transparent;
-	}
+	padding: 0 $base-line-height;
 }
 .attachment-portfolio_thumbnail {
-	border-radius: $base-line-height * 1.5 ;
-	width: $base-line-height *2.5;
-	height: $base-line-height *2.5;
+	border-radius: $base-line-height*1.5 ;
 	overflow: hidden;
-	margin: ($base-line-height / 2) auto 0 auto;
+	margin: ($base-line-height/2) auto 0 auto;
 	text-align: center;
 }
-
 .ict-portfolio-header {
 	margin: auto;
 	width: 70%;
 	text-align: center;
 	@include get_green_border(bottom, 2px);
 }
-// Reset margin only when there is a portfolio thumbnail (would be first-child)
+// // / Reset margin only when there is a portfolio thumbnail (would be first-child)
 .ict-portfolio-title:not(:first-child) {
 	margin: ($base-line-height/3) 0;
+}
+// // / Align header horizontally when there is no thumbnail
+.ict-portfolio-title:first-child {
+	margin: ($base-line-height*2.5) 0 ($base-line-height/3);
 }
 
 .ict-portfolio-section p {
@@ -52,18 +46,16 @@
 }
 
 // Portfolio page (vertical portfolio)
-#ict-portfolio-page {
+.ict-portfolio-page {
 	margin: auto;
 	width: 100%;
 	overflow: hidden;
 	text-align: center;
-	h2 {
-		font-size: 1.6em;
-	}
+	h2 { font-size: 1.6em; }
 	p {
 		font-size: 1.2em;
 		text-align: center;
-	
+	}
 }
 
 // TODO: we should use a template part to show the "horizontal" portfolio
@@ -80,6 +72,7 @@
 // // / Special gallery for horizontal front-page portfolio
 .ict-portfolio-page-content {
 	.gallery {
+		position: relative;
 		display: flex;
 		justify-content: center;
 		flex-flow: row nowrap;
@@ -88,25 +81,41 @@
 		border: 1px solid lighten($brand-main-color, 70%);
 		background-color: $brand-third-color;
 		box-shadow: inset 1px 1px 5px lighten($brand-main-color, 70%);
+		z-index: -1;
+		overflow: hidden;
+		@include breakpoint(mobile) {
+			flex-flow: column nowrap;
+		}
+		&:after {
+			content: "";
+			position: absolute;
+			top: -7px;
+			right: 0;
+			bottom: 0;
+			left: -7px;
+			box-shadow: inset 2px 2px 5px 2px lighten($brand-main-color, 70%);
+			z-index: 1;
+		}
 	}
 	.gallery-item {
 		flex: 0 1 auto;
 		margin: 0;
 		padding: $base-line-height;
 		padding-right: 0;
+		@include breakpoint(mobile) { padding: $base-line-height; }
 		&:last-child {
 			padding-right: $base-line-height;
 		}
 	}
-	//reset line height, if there is no caption text,
-	//check for .wp-caption-text issues
-	.gallery-icon:last-child { 
-		line-height: 0;
-	}
-	// scaling responsive
-	// TODO: breakpoints
-	img {
-		width: 100%;
+	// // / responsive image scaling
+	// // / reset line height, if there is no caption text,
+	.gallery-icon {
+		&:last-child { line-height: 0; }
+		img {
+			width: 100%;
+			@include breakpoint(mobile) {
+				width: 80%;
+			}
 		}
 	}
 }

@@ -1,67 +1,73 @@
 // Header & Main Menu
 // / Small header
 #ict-small-header {
-  position: fixed;
-  top: 0;
-  width: $site_width;
-  height: $lg-small-header;
-  line-height: $lg-small-header;
-  background-color: $brand-main-color;
-  z-index: $layer;
-  & a {
-	  color: $brand-third-color;
-  }
-  & a:hover {
-	  color:  $brand-second-color;
-  }
+	position: fixed;
+	top: 0;
+	width: $header-width;
+	height: $lg-small-header;
+	line-height: $lg-small-header;
+	font-size: $small-header-font-size;
+	text-align: center;
+	background-color: $brand-main-color;
+	z-index: $layer;
+	a {
+		color: $brand-third-color;
+	}
+	a:hover {
+		color:  $brand-second-color;
+	}
 }
 // // Small header contact
 #ict-small-header-contact,
 #ict-small-header-social,
 .ict-small-header-contact-link,
-.ict-small-header-contact-text,
-.ict-small-header-social-link {
-  line-height: inherit;
-  display: inline-block;
+.ict-small-header-contact-text {
+	display: inline-block;
+	height: inherit;
+	line-height: inherit;
 }
+
 // <span> surrounding the contact links
 #ict-small-header-contact {
-  position: absolute;
-  left: $lg-hspace;
-  @include breakpoint(tablet) {
-	  left: $md-hspace;
-  }
-  @include breakpoint(mobile) {
-	  display: none;
-  }
+	position: absolute;
+	left: $lg-hspace;
+	@include breakpoint(tablet) {
+		left: $md-hspace;
+	}
+	@include breakpoint(mobile) {
+		display: none;
+	}
 }
-/* <span> after the icon surrunding the link text */
+/* <span> after the icon surrounding the link text */
 .ict-small-header-contact-text {
-  padding-left: 0.2em;
-  margin-right: 1em;
+	padding-left: 0.2em;
+	margin-right: 1em;
 }
-// // Small header sozial
-/* Social link icons */
+// // Small header sozial widget
+// // / Display only the "Simple Follow Me Social Buttons Widget" plugin
+// // / all other widgets a removed via js
 #ict-small-header-social {
 	position: absolute;
 	right: $lg-hspace;
+	background-color: $brand-third-color;
+	border-radius: 3px;
 	@include breakpoint(tablet) {
 		right: $md-hspace;
 	}
 	@include breakpoint(mobile) {
-		left: 0;
-		right: 0;
-		text-align: center;
+		position: initial;
+	}
+	.sfmsb_widget,
+	.sfmsb-square {
+		height: $lg-small-header !important;
+		line-height: $lg-small-header !important;
+	}
+	.sfmsb-follow-social-buttons a,
+	.sfmsb-follow-social-buttons .sfmsb-text {
+		margin: 0 !important;
 	}
 }
-// // / Social link links
-.ict-small-header-social-link i {
-  line-height: inherit;
-  font-size: 1.4em;
-}
-.ict-small-header-social-link:not(:last-of-type) { //<div><li><a></a></li></div>
-  padding-right: 1em;
-}
+
 // / Header
 #ict-header,
 #ict-brand-wrapper,
@@ -72,13 +78,13 @@
 	@include breakpoint(tablet) {
 		height: $sm-header;
 		line-height: $sm-header;
-		//why not using display: none; here?
 	}
 }
 #ict-header {
 	position: fixed;
 	top: $lg-small-header;
 	width: $site_width;
+	box-sizing: initial;
 	background-color: $brand-main-color;
 	z-index: $layer;
 	@include get_green_border(bottom);
@@ -164,7 +170,7 @@
 		color: $brand-third-color;
 		background-color: $brand-main-color;
 		&:hover {
-			background-color: $main-menu-hover-effect; 
+			background-color: $main-menu-hover; 
 		}
 		&:last-child {
 			padding-right: $lg-hspace;
@@ -201,6 +207,6 @@
 		margin: 0;
 	}
 	.current-menu-item { // WordPress class
-	background-color: $main-menu-active-effect;
+	background-color: $main-menu-current;
 	}
 }
