@@ -1009,55 +1009,37 @@ a[rel="author"] b {
       -ms-flex-align: stretch;
           align-items: stretch;
   width: 100%;
+  padding: 0.809em;
   border: 1px solid #c6b3ff;
   background-color: whitesmoke;
-  box-shadow: inset 1px 1px 5px #c6b3ff;
-  z-index: -1;
   overflow: hidden;
 }
 @media screen and (max-width: 767px) {
   .ict-portfolio-page-content .gallery {
-    -webkit-flex-flow: column nowrap;
-        -ms-flex-flow: column nowrap;
-            flex-flow: column nowrap;
+    -webkit-flex-flow: row wrap;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    padding: 0.4045em;
   }
-}
-.ict-portfolio-page-content .gallery:after {
-  content: "";
-  position: absolute;
-  top: -7px;
-  right: 0;
-  bottom: 0;
-  left: -7px;
-  box-shadow: inset 2px 2px 5px 2px #c6b3ff;
-  z-index: 1;
 }
 .ict-portfolio-page-content .gallery-item {
   -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
   margin: 0;
-  padding: 1.618em;
-  padding-right: 0;
+  padding: 0.809em;
 }
 @media screen and (max-width: 767px) {
   .ict-portfolio-page-content .gallery-item {
-    padding: 1.618em;
+    padding: 0.4045em;
+    width: 50%;
   }
-}
-.ict-portfolio-page-content .gallery-item:last-child {
-  padding-right: 1.618em;
 }
 .ict-portfolio-page-content .gallery-icon:last-child {
   line-height: 0;
 }
 .ict-portfolio-page-content .gallery-icon img {
   width: 100%;
-}
-@media screen and (max-width: 767px) {
-  .ict-portfolio-page-content .gallery-icon img {
-    width: 80%;
-  }
 }
 
 .gallery {
