@@ -92,20 +92,21 @@
 #ict-brand-wrapper {
 	position: absolute;
 	left: 0;
-	img {
-		position: absolute;
-		margin: auto;
-		left: $lg-hspace;
-		top: 0;
-		bottom: 0;
-		height: $lg-brand-height;
-		@include breakpoint(tablet) {
-			left: $sm-hspace;
-			height: $sm-brand-height;
-		}
-		@include breakpoint(mobile) {
-			height: $xs-brand-height;
-		}
+}
+.custom-logo {
+	position: absolute;
+	margin: auto;
+	left: $lg-hspace;
+	top: 0;
+	bottom: 0;
+	height: $lg-brand-height;
+	width: auto;
+	@include breakpoint(tablet) {
+		left: $sm-hspace;
+		height: $sm-brand-height;
+	}
+	@include breakpoint(mobile) {
+		height: $xs-brand-height;
 	}
 }
 #ict-brand-link {} // TODO: implement non image brand

@@ -44,12 +44,8 @@
 	<nav>
 		<div id="ict-header">
 			<div id="ict-brand-wrapper">
-				<?php if ( get_theme_mod( 'custom_logo' ) ) : ?>
-				<a id="ict-brand-link" href="<?php echo home_url( '/' ); ?>">
-					<?php $post_id = get_theme_mod( 'custom_logo' ); ?>
-					<img src="<?php echo wp_get_attachment_url( $post_id ); ?>"
-						 alt="<?php echo get_the_title( $post_id ); ?>" />
-				</a><!-- #ict-brand-link -->
+				<?php if ( function_exists( 'the_custom_logo' ) ) : ?>
+					<?php the_custom_logo(); ?>
 				<?php else : ?> <!-- TODO: implement non-image header --> 
 				<a id="ict-brand-link" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<h1><?php bloginfo( 'name'); ?></h1>

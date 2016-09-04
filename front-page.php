@@ -24,7 +24,7 @@
 			); ?>
 			<?php if ( !empty($portfolio_posts[0]) && !empty($portfolio_posts[1]) && !empty($portfolio_posts[2]) ) : ?>
 			<div class="ict-portfolio-row">
-			<?php global $post, $more; ?>
+			<?php global $post; ?>
 			<?php foreach ($portfolio_posts as $post) : setup_postdata($post) ?>
 				<div class="ict-portfolio-column" >
 					<article>
@@ -38,14 +38,13 @@
 						</header>
 						<?php // TODO: no need for this element, use a template part? ?>
 						<section class="ict-portfolio-section">
-							<?php the_content(); ?>
+							<?php the_excerpt(); ?>
 						</section><!-- .ict-portfolio-section -->
 					</article>
 				</div> <!-- .ict-portfolio-column -->
 			<?php endforeach; // horizontal portfolio ?>
 			</div><!-- .ict-portfolio-row -->
 			<?php foreach( $portfolio_posts as $post ) : setup_postdata($post) ?>
-			<?php $more = 1; // show full post this time, strip teaser ?>
 			<div class="ict-portfolio-page">
 				<article>
 					<header>
@@ -55,7 +54,7 @@
 						</div><!-- .ict-portfolio-page-header -->
 					</header>
 					<div class="ict-portfolio-page-content">
-						<?php the_content('', true, ''); ?>
+						<?php the_content(); ?>
 					</div><!-- .ict-portfolio-page-content -->
 				</article>
 			</div><!-- .ict-portfolio-page -->

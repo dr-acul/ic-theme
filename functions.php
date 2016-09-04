@@ -12,7 +12,10 @@ const SIDEBAR_IDS = [ 'main-widgets', 'footer-widgets', 'header-widget' ];
 /*
  * Add theme supports
  */
-add_theme_support( 'custom-logo' );
+add_theme_support( 'custom-logo', array(
+	'height'		=> 48,
+	'flex-width'	=> true
+) );
 add_theme_support( 'post-thumbnails' );
 set_post_thumbnail_size( 150, 150, array( 'center', 'center' ) );
 add_theme_support( 'html5', array( 'gallery', 'caption' ) );
@@ -30,8 +33,7 @@ add_action( 'init', 'wpcodex_add_excerpt_support_for_pages' );
  * Source: WordPress-Codex
  */
 function remove_more_link_scroll( $link ) {
-	$link = preg_replace( '|#more-[0-9]+|', '', $link );
-	return $link;
+	return preg_replace( '|#more-[0-9]+|', '', $link );
 }
 add_filter( 'the_content_more_link', 'remove_more_link_scroll' );
 /*

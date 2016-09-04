@@ -81,10 +81,22 @@
 		padding: $base-line-height/2;
 		border: 1px solid lighten($brand-main-color, 70%);
 		background-color: $brand-third-color;
+		box-shadow: inset 1px 1px 5px lighten($brand-main-color, 70%);
+		z-index: -1;
 		overflow: hidden;
 		@include breakpoint(mobile) {
 			flex-flow: row wrap;
 			padding: $base-line-height/4;
+		}
+		&:after {
+			content: "";
+			position: absolute;
+			top: -7px;
+			right: 0;
+			bottom: 0;
+			left: -7px;
+			box-shadow: inset 2px 2px 5px 2px lighten($brand-main-color, 70%);
+			z-index: 1;
 		}
 
 	}
